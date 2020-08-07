@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CRM Shmot! | Новый заказ</title>
+  <!-- Tell the browser to be responsive to screen witableh -->
+  <meta name="viewport" content="witableh=device-witableh, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="css/adminlte.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition layout-top-nav">
+  <div class="wrapper">
+    <header>
+      <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <div class="container">
+          <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+            <ul class="navbar-nav w-100 justify-content-between">
+              <li class="nav-item">
+                <a href="index3.html" class="nav-link">Контент</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Клиенты</a>
+              </li>
+              <li class="nav-item">
+                <a href="index3.html" class="nav-link">Товары</a>
+              </li>
+              <li class="nav-item">
+                <a href="orders.html" class="nav-link active">Заказы</a>
+              </li>
+              <li class="nav-item">
+                <a href="index3.html" class="nav-link">Закупки</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Дашбоард</a>
+              </li>
+              <li class="nav-item">
+                <a href="index3.html" class="nav-link">Отчеты</a>
+              </li>
+              <li class="nav-item">
+                <a href="login.html" class="nav-link">Выход</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="content-wrapper d-flex flex-column h-100">
+      <div class="content-header">
+        <div class="container">
+          <h1 class="m-0 text-dark">Новый заказ</h1>
+        </div>
+      </div>
+      <div class="m-auto">
+        <div class="card">
+          <div class="card-body">
+            <form action="../../index3.html" method="post">
+              <div class="form-group mb-3">
+                <div class="input-group">
+                  <label for="phone">Введите номер телефона клиента</label>
+                  <div class="input-group">
+                    <input type="tel" class="form-control">
+                    <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Дальше</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-inline">
+        Anything you want
+      </div>
+      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    </footer>
+  </div>
+  <!-- REQUIRED SCRIPTS -->
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- InputMask -->
+  <script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="js/adminlte.min.js"></script>
+  <!-- Page script -->
+  <script>
+    $("input[type=tel]").inputmask("+7 (999) 999-9999");
+  </script>
+</body>
+
+</html>

@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>CRM Shmot! | Заказы</title>
-  <!-- Tell the browser to be responsive to screen witableh -->
-  <meta name="viewport" content="witableh=device-witableh, initial-scale=1">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -23,7 +23,6 @@
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="css/adminlte.min.css">
-  <link rel="stylesheet" href="css/custom.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -52,7 +51,7 @@
               <a href="index3.html" class="nav-link">Товары</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link active">Заказы</a>
+              <a href="#" class="nav-link">Заказы</a>
             </li>
             <li class="nav-item">
               <a href="index3.html" class="nav-link">Закупки</a>
@@ -83,7 +82,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6 d-flex justify-content-between">
               <a href="#" class="btn btn-primary">Версия для печати</a>
-              <a href="new-order.html" class="btn btn-primary">Добавить заказ</a>
+              <a href="#" class="btn btn-primary">Добавить заказ</a>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -97,9 +96,9 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-lg-6">
-                  <label for="search-name">Поиск по имени:</label>
+                  <label for="search">Поиск по имени:</label>
                   <div class="input-group">
-                    <input type="search-name" class="form-control" placeholder="ФИО" id="search-name">
+                    <input type="search-name" class="form-control" placeholder="ФИО" id="search">
                     <div class="input-group-append">
                       <span class="input-group-text"><i class="fas fa-search"></i></span>
                     </div>
@@ -183,40 +182,26 @@
                 </div>
               </div>
               <div class="mt-4">
-                <table id="orders" class="table table-bordered table-striped mt-4">
+                <table id="example" class="display" style="width:100%">
                   <thead>
-                    <tr>
-                      <th><span class="sr-only">Детальная информация</span></th>
-                      <th>Номер</th>
-                      <th>Профиль</th>
-                      <th>Вес</th>
-                      <th>Трек</th>
-                      <th>Источник</th>
-                      <th>Статус</th>
-                      <th>Прогресс</th>
-                      <th>Пред.</th>
-                      <th>Цена</th>
-                      <th>Дата заказа</th>
-                      <th><span class="sr-only">Кнопки управления заказом</span></th>
-                    </tr>
+                      <tr>
+                          <th></th>
+                          <th>First name</th>
+                          <th>Last name</th>
+                          <th>Position</th>
+                          <th>Office</th>
+                      </tr>
                   </thead>
                   <tfoot>
-                    <tr>
-                      <th><span class="sr-only">Детальная информация</span></th>
-                      <th>Номер</th>
-                      <th>Профиль</th>
-                      <th>Вес</th>
-                      <th>Трек</th>
-                      <th>Источник</th>
-                      <th>Статус</th>
-                      <th>Прогресс</th>
-                      <th>Пред.</th>
-                       <th>Цена</th>
-                      <th>Дата заказа</th>
-                      <th><span class="sr-only">Кнопки управления заказом</span></th>
-                    </tr>
+                      <tr>
+                          <th></th>
+                          <th>First name</th>
+                          <th>Last name</th>
+                          <th>Position</th>
+                          <th>Office</th>
+                      </tr>
                   </tfoot>
-                </table>
+              </table>
               </div>
             </div>
           </div>
@@ -273,67 +258,10 @@
           firstDay: 1
         }
       });
-      var table = $("#orders").DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": "orders.php",
-        "columns": [
-          {
-            "class": "details-control",
-            "orderable": false,
-            "data": null,
-            "defaultContent": ""
-          },
-          {
-            "data": "number",
-            render: function (data) {
-              return "№ " + data;
-            }
-          },
-          {
-            "data": "social",
-            render: function (data) {
-              return "<a href=" + data + ">@" + outputUser(data) + "</a>";
-            }
-          },
-          { "data": "weight" },
-          { "data": "track" },
-          { "data": "source" },
-          {
-            "data": "status",
-            render: function (data) {
-              return mappingStatuses(data);
-            }
-          },
-          {
-            "data": "status",
-            render: function (data) {
-              return "<div class='progress'><div class='progress-bar bg-primary progress-bar-striped' role='progressbar' aria-valuenow=" + mappingProgress(data) + " aria-valuemin='0' aria-valuemax='100' style='width:" + mappingProgress(data) + "%'></div></div>";
-            }
-          },
-          {
-            "data": "prepayment",
-            render: function (data) {
-              return data + " руб";
-            }
-          },
-          {
-            "data": "price",
-            render: function (data) {
-              return data + " руб";
-            }
-          },
-          { "data": "date order" },
-          {
-            "defaultContent": "<a href='#'' class='btn btn-primary mr-1'><i class='fas fa-edit'></i><span class='sr-only'>Редактировать</span></a><a href='#' class='btn btn-primary ml-1'><i class='fas fa-search-plus'></i><span class='sr-only'>Посмотреть</span></a>"
-          },
-        ],
-        "order": [[1, 'asc']],
+      var table = $("#example1").DataTable({
         "responsive": true,
         "autoWidth": false,
-        "bSort": false,
-         "bFilter": false,
-        "lengthChange": false,
+        "bSort":false,
         "language": {
           "processing": "Подождите...",
           "search": "Поиск:",
@@ -362,82 +290,71 @@
               "1": "Выбрана одна запись"
             }
           }
-        },
+        }
       });
-      function outputDetails(data) {
-        var detailInformation = "";
-        for (key in data.detail) {
-          var value = data.detail[key].value;
-          var result = "";
-          if (Array.isArray(value)) {
-            result +="<ol>";
-            value.forEach(function(item){
-              result +=  "<li>" + item + "</li>";
-            })
-            result += "</ol>";
-          }
-          else {
-            result = value;
-          }
-          detailInformation += "<div>" + data.detail[key].title + ":<br>" + result + "</div>";
-          
+      $("#search").change(function(){
+      table.columns($(".column-2")).search(this.value).draw();
+    })
+    });
+    function format ( d ) {
+    return 'Full name: '+d.first_name+' '+d.last_name+'<br>'+
+        'Salary: '+d.salary+'<br>'+
+        'The child row can contain any data you wish, including links, images, inner tables etc.';
 }
-        return detailInformation;
-      }
-      function outputUser(link) {
-        return link.split('/')[3];
-      }
-      var statuses = {
-        'new': 'Новый',
-        'purchases': 'В закупке',
-        'manned': 'Укомплектован',
-        'shipped': 'Отправлен',
-        'received': 'Получен'
-      };
-      
-      function mappingStatuses(status) {
-        return statuses[status];
-      }
-      function mappingProgress(status) {
-        var length = Object.keys(statuses).length;
-        var indexElement;
-        var indexItem = Object.keys(statuses).some(function(key, index) {
-          if(statuses[key] == statuses[status]) {
-            indexElement = index;
-            return;
-    };
-        });
-    return 100/(length-1)*indexElement;
-}
-      var detailRows = [];
-      $('#orders tbody').on('click', 'tr td.details-control', function () {
+ 
+$(document).ready(function() {
+    var dt = $('#example').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": "orders1.php",
+        "columns": [
+            {
+                "class":          "details-control",
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ""
+            },
+            { "data": "first_name" },
+            { "data": "last_name" },
+            { "data": "position" },
+            { "data": "office" }
+        ],
+        "order": [[1, 'asc']]
+    } );
+ 
+    // Array to track the ids of the details displayed rows
+    var detailRows = [];
+ 
+    $('#example tbody').on( 'click', 'tr td.details-control', function () {
         var tr = $(this).closest('tr');
-        var row = table.row(tr);
-        var content = $.inArray(tr.attr('id'), detailRows);
-        if (row.child.isShown()) {
-          tr.removeClass('details');
-          row.child.hide();
-          detailRows.splice(content, 1);
+        var row = dt.row( tr );
+        var idx = $.inArray( tr.attr('id'), detailRows );
+ 
+        if ( row.child.isShown() ) {
+            tr.removeClass( 'details' );
+            row.child.hide();
+ 
+            // Remove from the 'open' array
+            detailRows.splice( idx, 1 );
         }
         else {
-          tr.addClass('details');
-          row.child(outputDetails(row.data())).show();
-          if (content === -1) {
-            detailRows.push(tr.attr('id'));
-         }
+            tr.addClass( 'details' );
+            row.child( format( row.data() ) ).show();
+ 
+            // Add to the 'open' array
+            if ( idx === -1 ) {
+                detailRows.push( tr.attr('id') );
+            }
         }
-      });
-
-      table.on('draw', function () {
-        $.each(detailRows, function (i, id) {
-          $('#' + id + ' td.details-control').trigger('click');
-        });
-      });
-      $("#search-name").keyup(function () {
-        console.log(table.columns($(".details-control")).search(this.value));
-        table.columns($(".details-control")).search(this.value).draw();
-      })
-    });
+    } );
+ 
+    // On each draw, loop over the `detailRows` array and show any child rows
+    dt.on( 'draw', function () {
+        $.each( detailRows, function ( i, id ) {
+            $('#'+id+' td.details-control').trigger( 'click' );
+        } );
+    } );
+} );
   </script>
 </body>
 

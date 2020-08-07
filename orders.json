@@ -1,0 +1,229 @@
+{
+    "draw": 5,
+    "recordsTotal": 5,
+    "recordsFiltered": 10,
+    "data": [
+        {
+            "number": "2324",
+            "social": "https://www.instagram.com/alys/",
+            "weight": "500",
+            "track": "546346",
+            "source": "Instagram",
+            "status": "new",
+            "prepayment": "300",
+            "price": "3000",
+            "date order": "03.08.2020",
+            "detail": {
+                "tel": {
+                    "title": "Номер клиента",
+                    "value": "+7 937 000 22 33"
+                },
+                "name": {
+                    "title": "ФИО",
+                    "value": "Мамонтова Анна Софиевна"
+                },
+                "address": {
+                    "title": "Адрес",
+                    "value": "410033 Кемерова Пушкина 33 33"
+                },
+                "products": {
+                    "title": "Шмот",
+                    "value": [
+                        "302334 Блузка 42 Черная Принято",
+                        "4324434 Шорты 36 Белая Принято"
+                    ]
+                },
+                "date shipment": {
+                    "title": "Дата принятия",
+                    "value": "04.08.2020"
+                },
+                "date storage": {
+                    "title": "Дата хранения на почте",
+                    "value": "05.08.2020"
+                },
+                "date receipt": {
+                    "title": "Дата получения",
+                    "value": "06.08.2020"
+                }
+            }
+        },
+        {
+            "number": "2325",
+            "social": "https://www.vk.com/alys/",
+            "weight": "600",
+            "track": "546347",
+            "source": "Instagram",
+            "status": "purchases",
+            "prepayment": "400",
+            "price": "3000",
+            "date order": "03.08.2020",
+            "detail": {
+                "tel": {
+                    "title": "Номер клиента",
+                    "value": "+7 937 000 22 34"
+                },
+                "name": {
+                    "title": "ФИО",
+                    "value": "Мамонтова Анна Дмитриевна"
+                },
+                "address": {
+                    "title": "Адрес",
+                    "value": "410033 Кемерова Пушкина 33 34"
+                },
+                "products": {
+                    "title": "Шмот",
+                    "value": [
+                        "302334 Блузка 42 Зеленая Принято",
+                        "4324434 Шорты 36 Красная Принято"
+                    ]
+                },
+                "date shipment": {
+                    "title": "Дата принятия",
+                    "value": "05.08.2020"
+                },
+                "date storage": {
+                    "title": "Дата хранения на почте",
+                    "value": "06.08.2020"
+                },
+                "date receipt": {
+                    "title": "Дата получения",
+                    "value": "07.08.2020"
+                }
+            }
+        },
+        {
+            "number": "2334",
+            "social": "https://www.facebook.com/alys/",
+            "weight": "700",
+            "track": "546356",
+            "source": "Instagram",
+            "status": "manned",
+            "prepayment": "500",
+            "price": "3000",
+            "date order": "03.08.2020",
+            "detail": {
+                "tel": 
+                    {
+                        "title": "Номер клиента",
+                        "value": "+7 937 000 22 44"
+                    },
+                "name": {
+                    "title": "ФИО",
+                    "value": "Мамонтова Елена Дмитриевна"
+                },
+                "address": {
+                    "title": "Адрес",
+                    "value": "410033 Кемерова Пушкина 33 44"
+                },
+                "products": {
+                    "title": "Шмот",
+                    "value": [
+                        "302334 Блузка 43 Зеленая Принято",
+                        "4324434 Шорты 37 Красная Принято"
+                    ]
+                },
+                "date shipment": {
+                    "title": "Дата принятия",
+                    "value": "06.08.2020"
+                },
+                "date storage": {
+                    "title": "Дата хранения на почте",
+                    "value": "07.08.2020"
+                },
+                "date receipt": {
+                    "title": "Дата получения",
+                    "value": "08.08.2020"
+                }
+            }
+        },
+        {
+            "number": "2424",
+            "social": "https://www.instagram.com/user/",
+            "weight": "800",
+            "track": "546446",
+            "source": "VK",
+            "status": "shipped",
+            "prepayment": "600",
+            "price": "3000",
+            "date order": "03.08.2020",
+            "detail": {
+                "tel": {
+                    "title": "Номер клиента",
+                    "value": "+7 937 000 23 44"
+                },
+                "name": {
+                    "title": "ФИО",
+                    "value": "Дятлова Елена Дмитриевна"
+                },
+                "address": {
+                    "title": "Адрес",
+                    "value": "410033 Кемерова Пушкина 34 44"
+                },
+                "products": {
+                    "title": "Шмот",
+                    "value": [
+                        "302334 Блузка 53 Зеленая Принято",
+                        "4324434 Шорты 47 Красная Принято"
+                    ]
+                },
+                "date shipment": {
+                    "title": "Дата принятия",
+                    "value": "06.07.2020"
+                },
+                "date storage": {
+                    "title": "Дата хранения на почте",
+                    "value": "07.07.2020"
+                },
+                "date receipt": {
+                    "title": "Дата получения",
+                    "value": "08.07.2020"
+                }
+            }
+        },
+        {
+            "number": "3324",
+            "social": "https://www.vk.com/user/",
+            "weight": "900",
+            "track": "547346",
+            "source": "VK",
+            "status": "received",
+            "prepayment": "700",
+            "price": "3000",
+            "date order": "03.08.2020",
+            "detail": {
+                "tel":
+                    {
+                        "title": "Номер клиента",
+                        "value": "+7 937 000 33 44"
+                    },
+                "name": {
+                    "title": "ФИО",
+                    "value": "Дятлова Елена Васильевна"
+                },
+                "address": {
+                    "title": "Адрес",
+                    "value": "410033 Кемерова Пушкина 44 44"
+                },
+                "products": {
+                    "title": "Шмот",
+                    "value": [
+                        "302334 Рубашка 53 Зеленая Принято",
+                        "4324434 Бриджи 47 Красная Принято"
+                    ]
+                },
+                "date shipment": {
+                    "title": "Дата принятия",
+                    "value": "07.07.2020"
+                },
+                "date storage": {
+                    "title": "Дата хранения на почте",
+                    "value": "08.07.2020"
+                },
+                "date receipt": {
+                    "title": "Дата получения",
+                    "value": "09.07.2020"
+                }
+            }
+        }
+    ]
+}
