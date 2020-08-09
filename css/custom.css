@@ -9,3 +9,6 @@ tr.details td.details-control {
  .table th {
      vertical-align: middle;
  }
+ #orders_wrapper {
+     width: 1085px;
+ }

@@ -4,15 +4,25 @@
     "recordsFiltered": 10,
     "data": [
         {
+            "id": "assdfsdf32324",
             "number": "2324",
+            "social_type": "IG",
+            "link_view": "/orders/view/2213fffsdf",
+            "link_edit": "/orders/edit/2213fffsdf",
             "social": "https://www.instagram.com/alys/",
             "weight": "500",
             "track": "546346",
-            "source": "Instagram",
+            "source": {"type": "Instagram", "source": "https://www.instagram.com/top.wcs/"},
             "status": "new",
-            "prepayment": "300",
+            "prepayment": "3000",
+            "is_full_prepayment": true,
             "price": "3000",
-            "date order": "03.08.2020",
+            "date order": "03.08.2020 17:00",
+            "progress": {
+                "min": 0,
+                "current": 50,
+                "max": 100
+            },
             "detail": {
                 "tel": {
                     "title": "Номер клиента",
@@ -29,34 +39,64 @@
                 "products": {
                     "title": "Шмот",
                     "value": [
-                        "302334 Блузка 42 Черная Принято",
-                        "4324434 Шорты 36 Белая Принято"
+                        {
+                            "articule": "302334",
+                            "link_articule": "/content/302334",
+                            "name": "Блузка",
+                            "link_name": "/goods/2213fffsdf",
+                            "size": "42",
+                            "color": "Черная",
+                            "status": "Принято"
+                        },
+                        {
+                            "articule": "302335",
+                            "link_articule": "/content/302335",
+                            "name": "Шорты",
+                            "link_name": "/goods/2213fffsdf",
+                            "size": "44",
+                            "color": "Зеленый",
+                            "status": "Закуплено"
+                        }
                     ]
+                },
+                "date created": {
+                    "title": "Дата создания",
+                    "value": "03.08.2020 16:00"
                 },
                 "date shipment": {
                     "title": "Дата принятия",
-                    "value": "04.08.2020"
+                    "value": "04.08.2020 17:00"
                 },
                 "date storage": {
                     "title": "Дата хранения на почте",
-                    "value": "05.08.2020"
+                    "value": "05.08.2020 18:00"
                 },
                 "date receipt": {
                     "title": "Дата получения",
-                    "value": "06.08.2020"
+                    "value": "06.08.2020 19:00"
                 }
             }
         },
         {
+            "id": "assdfsdf32325",
             "number": "2325",
+            "social_type": "VK",
+            "link_view": "/orders/view/2213fffsdg",
+            "link_edit": "/orders/edit/2213fffsdg",
             "social": "https://www.vk.com/alys/",
             "weight": "600",
             "track": "546347",
-            "source": "Instagram",
+            "source": {"type": "VK", "source": "https://www.vk.com/top.wcs/"},
             "status": "purchases",
             "prepayment": "400",
+            "is_full_prepayment": false,
             "price": "3000",
-            "date order": "03.08.2020",
+            "date order": "03.08.2020 17:00",
+            "progress": {
+                "min": 0,
+                "current": 60,
+                "max": 100
+            },
             "detail": {
                 "tel": {
                     "title": "Номер клиента",
@@ -73,8 +113,54 @@
                 "products": {
                     "title": "Шмот",
                     "value": [
-                        "302334 Блузка 42 Зеленая Принято",
-                        "4324434 Шорты 36 Красная Принято"
+                        {
+                            "articule": "302334",
+                            "link_articule": "/content/302334",
+                            "name": "Блузка",
+                            "link_name": "/goods/2213fffsdf",
+                            "size": "42",
+                            "color": "Черная",
+                            "status": "Принято"
+                        },
+                        {
+                            "articule": "302335",
+                            "link_articule": "/content/302335",
+                            "name": "Шорты",
+                            "link_name": "/goods/2213fffsdf",
+                            "size": "44",
+                            "color": "Черный",
+                            "status": "Закуплено"
+                        }
+                    ]
+                },
+                "notes": {
+                    "title": "Комментарии",
+                    "value": [
+                        {
+                            "created_at": "20.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Принято в обработку"
+                        },
+                        {
+                            "created_at": "21.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Закуплено"
+                        },
+                        {
+                            "created_at": "22.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Упаковано"
+                        },
+                        {
+                            "created_at": "23.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Отправлено"
+                        },
+                        {
+                            "created_at": "24.08.2020 17:00",
+                            "type": "user",
+                            "msg": "Клиент не принимает заказ"
+                        }
                     ]
                 },
                 "date shipment": {
@@ -92,15 +178,25 @@
             }
         },
         {
+            "id": "assdfsdf32335",
             "number": "2334",
+            "social_type": "FB",
+            "link_view": "/orders/view/2213fffseg",
+            "link_edit": "/orders/edit/2213fffseg",
             "social": "https://www.facebook.com/alys/",
             "weight": "700",
             "track": "546356",
-            "source": "Instagram",
+            "source": {"type": "Facebook", "source": "https://www.facebook.com/top.wcs/"},
             "status": "manned",
             "prepayment": "500",
+            "is_full_prepayment": false,
             "price": "3000",
-            "date order": "03.08.2020",
+            "date order": "03.08.2020 17:00",
+            "progress": {
+                "min": 0,
+                "current": 70,
+                "max": 100
+            },
             "detail": {
                 "tel": 
                     {
@@ -118,8 +214,54 @@
                 "products": {
                     "title": "Шмот",
                     "value": [
-                        "302334 Блузка 43 Зеленая Принято",
-                        "4324434 Шорты 37 Красная Принято"
+                        {
+                            "articule": "302335",
+                            "link_articule": "/content/302335",
+                            "name": "Шорты",
+                            "link_name": "/goods/2213fffsd",
+                            "size": "43",
+                            "color": "Белый",
+                            "status": "Закуплено"
+                        },
+                        {
+                            "articule": "30235",
+                            "link_articule": "/content/30245",
+                            "name": "Рубашка",
+                            "link_name": "/goods/2213fffsef",
+                            "size": "45",
+                            "color": "Зеленый",
+                            "status": "Укомплектовано"
+                        }
+                    ]
+                },
+                "notes": {
+                    "title": "Комментарии",
+                    "value": [
+                        {
+                            "created_at": "20.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Принято в обработку"
+                        },
+                        {
+                            "created_at": "21.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Закуплено"
+                        },
+                        {
+                            "created_at": "22.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Упаковано"
+                        },
+                        {
+                            "created_at": "23.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Отправлено"
+                        },
+                        {
+                            "created_at": "24.08.2020 17:00",
+                            "type": "user",
+                            "msg": "Клиент не принимает заказ"
+                        }
                     ]
                 },
                 "date shipment": {
@@ -137,15 +279,25 @@
             }
         },
         {
+            "id": "assdfsdf32435",
             "number": "2424",
+            "social_type": "IG",
+            "link_view": "/orders/view/2213fffteg",
+            "link_edit": "/orders/edit/2213fffteg",
             "social": "https://www.instagram.com/user/",
             "weight": "800",
             "track": "546446",
-            "source": "VK",
+            "source": {"type": "Instagram", "source": "https://www.instagram.com/top.wcs/"},
             "status": "shipped",
             "prepayment": "600",
+            "is_full_prepayment": false,
             "price": "3000",
-            "date order": "03.08.2020",
+            "date order": "03.08.2020 17:00",
+            "progress": {
+                "min": 0,
+                "current": 80,
+                "max": 100
+            },
             "detail": {
                 "tel": {
                     "title": "Номер клиента",
@@ -162,8 +314,54 @@
                 "products": {
                     "title": "Шмот",
                     "value": [
-                        "302334 Блузка 53 Зеленая Принято",
-                        "4324434 Шорты 47 Красная Принято"
+                        {
+                            "articule": "302335",
+                            "link_articule": "/content/302335",
+                            "name": "Шорты",
+                            "link_name": "/goods/2213fffsd",
+                            "size": "43",
+                            "color": "Белый",
+                            "status": "Закуплено"
+                        },
+                        {
+                            "articule": "30235",
+                            "link_articule": "/content/30245",
+                            "name": "Рубашка",
+                            "link_name": "/goods/2213fffsef",
+                            "size": "45",
+                            "color": "Зеленый",
+                            "status": "Укомплектовано"
+                        }
+                    ]
+                },
+                "notes": {
+                    "title": "Комментарии",
+                    "value": [
+                        {
+                            "created_at": "20.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Принято в обработку"
+                        },
+                        {
+                            "created_at": "21.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Закуплено"
+                        },
+                        {
+                            "created_at": "22.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Упаковано"
+                        },
+                        {
+                            "created_at": "23.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Отправлено"
+                        },
+                        {
+                            "created_at": "24.08.2020 17:00",
+                            "type": "user",
+                            "msg": "Клиент не принимает заказ"
+                        }
                     ]
                 },
                 "date shipment": {
@@ -181,15 +379,25 @@
             }
         },
         {
+            "id": "assdfsdf33435",
             "number": "3324",
+            "social_type": "VK",
+            "link_view": "/orders/view/2213ffgteg",
+            "link_edit": "/orders/edit/2213ffgteg",
             "social": "https://www.vk.com/user/",
             "weight": "900",
             "track": "547346",
-            "source": "VK",
+            "source": {"type": "VK", "source": "https://www.vk.com/top.wcs/"},
             "status": "received",
             "prepayment": "700",
+            "is_full_prepayment": false,
             "price": "3000",
-            "date order": "03.08.2020",
+            "date order": "03.08.2020 17:00",
+            "progress": {
+                "min": 0,
+                "current": 90,
+                "max": 100
+            },
             "detail": {
                 "tel":
                     {
@@ -207,8 +415,54 @@
                 "products": {
                     "title": "Шмот",
                     "value": [
-                        "302334 Рубашка 53 Зеленая Принято",
-                        "4324434 Бриджи 47 Красная Принято"
+                        {
+                            "articule": "302335",
+                            "link_articule": "/content/302335",
+                            "name": "Шорты",
+                            "link_name": "/goods/2213fffsd",
+                            "size": "43",
+                            "color": "Белый",
+                            "status": "Закуплено"
+                        },
+                        {
+                            "articule": "30235",
+                            "link_articule": "/content/30245",
+                            "name": "Рубашка",
+                            "link_name": "/goods/2213fffsef",
+                            "size": "45",
+                            "color": "Зеленый",
+                            "status": "Укомплектовано"
+                        }
+                    ]
+                },
+                "notes": {
+                    "title": "Комментарии",
+                    "value": [
+                        {
+                            "created_at": "20.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Принято в обработку"
+                        },
+                        {
+                            "created_at": "21.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Закуплено"
+                        },
+                        {
+                            "created_at": "22.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Упаковано"
+                        },
+                        {
+                            "created_at": "23.08.2020 17:00",
+                            "type": "service",
+                            "msg": "Отправлено"
+                        },
+                        {
+                            "created_at": "24.08.2020 17:00",
+                            "type": "user",
+                            "msg": "Клиент не принимает заказ"
+                        }
                     ]
                 },
                 "date shipment": {

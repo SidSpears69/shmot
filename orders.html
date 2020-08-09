@@ -1,102 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>CRM Shmot! | Заказы</title>
-  <!-- Tell the browser to be responsive to screen witableh -->
   <meta name="viewport" content="witableh=device-witableh, initial-scale=1">
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- DataTables -->
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <!-- Theme style -->
   <link rel="stylesheet" href="css/adminlte.min.css">
   <link rel="stylesheet" href="css/custom.css">
-  <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
 <body class="hold-transition layout-top-nav">
   <div class="wrapper">
-
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-      <div class="container">
-        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse order-3" id="navbarCollapse">
-          <!-- Left navbar links -->
-          <ul class="navbar-nav w-100 justify-content-between">
-            <li class="nav-item">
-              <a href="index3.html" class="nav-link">Контент</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Клиенты</a>
-            </li>
-            <li class="nav-item">
-              <a href="index3.html" class="nav-link">Товары</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link active">Заказы</a>
-            </li>
-            <li class="nav-item">
-              <a href="index3.html" class="nav-link">Закупки</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Дашбоард</a>
-            </li>
-            <li class="nav-item">
-              <a href="index3.html" class="nav-link">Отчеты</a>
-            </li>
-            <li class="nav-item">
-              <a href="login.html" class="nav-link">Выход</a>
-            </li>
-          </ul>
+    <header>
+      <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <div class="container">
+          <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+            <ul class="navbar-nav w-100 justify-content-between">
+              <li class="nav-item">
+                <a href="index3.html" class="nav-link">Контент</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Клиенты</a>
+              </li>
+              <li class="nav-item">
+                <a href="index3.html" class="nav-link">Товары</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link active">Заказы</a>
+              </li>
+              <li class="nav-item">
+                <a href="index3.html" class="nav-link">Закупки</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Дашбоард</a>
+              </li>
+              <li class="nav-item">
+                <a href="index3.html" class="nav-link">Отчеты</a>
+              </li>
+              <li class="nav-item">
+                <a href="login.html" class="nav-link">Выход</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-    <!-- /.navbar -->
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
+      </nav>
+    </header>
+    <main class="content-wrapper pb-5">
       <div class="content-header">
         <div class="container">
           <div class="row mb-2">
-            <div class="col-sm-6">
+            <div class="col-sm-5">
               <h1 class="m-0 text-dark">Заказы</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6 d-flex justify-content-between">
+            </div>
+            <div class="col-sm-7 d-flex justify-content-between">
               <a href="#" class="btn btn-primary">Версия для печати</a>
               <a href="new-order.html" class="btn btn-primary">Добавить заказ</a>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- /.content-header -->
-
-      <!-- Main content -->
       <div class="content">
         <div class="container">
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <div class="col-lg-6">
+                <div class="col-sm-6">
                   <label for="search-name">Поиск по имени:</label>
                   <div class="input-group">
                     <input type="search-name" class="form-control" placeholder="ФИО" id="search-name">
@@ -107,7 +88,7 @@
                 </div>
               </div>
               <div class="row mt-4">
-                <div class="col-lg-6">
+                <div class="col-sm-6">
                   <label for="reservation">Фильтр по датам заказа:</label>
                   <div class="input-group">
                     <input type="text" class="form-control" id="reservation">
@@ -116,17 +97,17 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-6 d-flex justify-content-center align-items-end">
+                <div class="col-sm-6 d-flex justify-content-center align-items-end">
                   <div class="icheck-success d-inline">
-                    <input type="checkbox" id="checkboxSuccess3">
-                    <label for="checkboxSuccess3">
+                    <input type="checkbox" id="full-purchased">
+                    <label for="full-purchased">
                       Полностью закуплен
                     </label>
                   </div>
                 </div>
               </div>
               <div class="row mt-4">
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-sm-6 mb-lg-0 mb-sm-4">
                   <div class="input-group">
                     <label for="search-number" class="sr-only">Поиск по номеру заказа</label>
                     <input type="search" class="form-control" id="search-number" placeholder="№">
@@ -135,23 +116,24 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-sm-6 mb-lg-0 mb-sm-4">
                   <div class="d-flex">
                     <label for="social-list" class="sr-only">Выбор социальной сети</label>
                     <select class="custom-select w-25" id="social-list">
-                      <option>ig</option>
-                      <option>vk</option>
+                      <option>IG</option>
+                      <option>VK</option>
+                      <option>Fb</option>
                     </select>
                     <div class="input-group w-75">
                       <label for="search-number" class="sr-only">Поиск по нику</label>
-                      <input type="search" class="form-control" id="search-number" placeholder="username">
+                      <input type="search" class="form-control" id="search-username" placeholder="username">
                       <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-sm-4">
                   <div class="input-group">
                     <label for="search-weight" class="sr-only">Поиск по весу</label>
                     <input type="search" class="form-control" id="search-weight" placeholder="Вес">
@@ -160,7 +142,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-sm-4">
                   <div class="input-group">
                     <label for="search-track" class="sr-only">Поиск по треку</label>
                     <input type="search" class="form-control" id="search-track" placeholder="Трек">
@@ -169,7 +151,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-sm-4">
                   <div class="input-group">
                     <label for="status-list" class="sr-only">Выбор статуса</label>
                     <select class="custom-select w-25" id="status-list">
@@ -182,7 +164,7 @@
                   </div>
                 </div>
               </div>
-              <div class="mt-4">
+              <div class="mt-4 overflow-auto pb-3">
                 <table id="orders" class="table table-bordered table-striped mt-4">
                   <thead>
                     <tr>
@@ -211,7 +193,7 @@
                       <th>Статус</th>
                       <th>Прогресс</th>
                       <th>Пред.</th>
-                       <th>Цена</th>
+                      <th>Цена</th>
                       <th>Дата заказа</th>
                       <th><span class="sr-only">Кнопки управления заказом</span></th>
                     </tr>
@@ -220,225 +202,27 @@
               </div>
             </div>
           </div>
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
+        </div>
       </div>
-      <!-- /.content -->
-    </div>
+    </main>
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-inline">
+        Anything you want
+      </div>
+      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    </footer>
   </div>
-  <!-- /.content-wrapper -->
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
-  </div>
-  <!-- ./wrapper -->
-
-  <!-- REQUIRED SCRIPTS -->
-
-  <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- InputMask -->
   <script src="plugins/moment/moment.min.js"></script>
-  <!-- date-range-picker -->
   <script src="plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- Tempusdominus Bootstrap 4 -->
   <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-  <!-- DataTables -->
   <script src="plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <!-- AdminLTE App -->
   <script src="js/adminlte.min.js"></script>
-  <!-- Page script -->
-  <script>
-    //Date range picker
-    $(function () {
-      $('#reservation').daterangepicker({
-        locale: {
-          format: 'DD.MM.YYYY',
-          applyLabel: 'Принять',
-          cancelLabel: 'Отмена',
-          invalidDateLabel: 'Выберите дату',
-          daysOfWeek: ['Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс', 'Пн'],
-          monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-          firstDay: 1
-        }
-      });
-      var table = $("#orders").DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": "orders.php",
-        "columns": [
-          {
-            "class": "details-control",
-            "orderable": false,
-            "data": null,
-            "defaultContent": ""
-          },
-          {
-            "data": "number",
-            render: function (data) {
-              return "№ " + data;
-            }
-          },
-          {
-            "data": "social",
-            render: function (data) {
-              return "<a href=" + data + ">@" + outputUser(data) + "</a>";
-            }
-          },
-          { "data": "weight" },
-          { "data": "track" },
-          { "data": "source" },
-          {
-            "data": "status",
-            render: function (data) {
-              return mappingStatuses(data);
-            }
-          },
-          {
-            "data": "status",
-            render: function (data) {
-              return "<div class='progress'><div class='progress-bar bg-primary progress-bar-striped' role='progressbar' aria-valuenow=" + mappingProgress(data) + " aria-valuemin='0' aria-valuemax='100' style='width:" + mappingProgress(data) + "%'></div></div>";
-            }
-          },
-          {
-            "data": "prepayment",
-            render: function (data) {
-              return data + " руб";
-            }
-          },
-          {
-            "data": "price",
-            render: function (data) {
-              return data + " руб";
-            }
-          },
-          { "data": "date order" },
-          {
-            "defaultContent": "<a href='#'' class='btn btn-primary mr-1'><i class='fas fa-edit'></i><span class='sr-only'>Редактировать</span></a><a href='#' class='btn btn-primary ml-1'><i class='fas fa-search-plus'></i><span class='sr-only'>Посмотреть</span></a>"
-          },
-        ],
-        "order": [[1, 'asc']],
-        "responsive": true,
-        "autoWidth": false,
-        "bSort": false,
-         "bFilter": false,
-        "lengthChange": false,
-        "language": {
-          "processing": "Подождите...",
-          "search": "Поиск:",
-          "lengthMenu": "Показать _MENU_ записей",
-          "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
-          "infoEmpty": "Записи с 0 до 0 из 0 записей",
-          "infoFiltered": "(отфильтровано из _MAX_ записей)",
-          "infoPostFix": "",
-          "loadingRecords": "Загрузка записей...",
-          "zeroRecords": "Записи отсутствуют.",
-          "emptyTable": "В таблице отсутствуют данные",
-          "paginate": {
-            "first": "Первая",
-            "previous": "Предыдущая",
-            "next": "Следующая",
-            "last": "Последняя"
-          },
-          "aria": {
-            "sortAscending": ": активировать для сортировки столбца по возрастанию",
-            "sortDescending": ": активировать для сортировки столбца по убыванию"
-          },
-          "select": {
-            "rows": {
-              "_": "Выбрано записей: %d",
-              "0": "Кликните по записи для выбора",
-              "1": "Выбрана одна запись"
-            }
-          }
-        },
-      });
-      function outputDetails(data) {
-        var detailInformation = "";
-        for (key in data.detail) {
-          var value = data.detail[key].value;
-          var result = "";
-          if (Array.isArray(value)) {
-            result +="<ol>";
-            value.forEach(function(item){
-              result +=  "<li>" + item + "</li>";
-            })
-            result += "</ol>";
-          }
-          else {
-            result = value;
-          }
-          detailInformation += "<div>" + data.detail[key].title + ":<br>" + result + "</div>";
-          
-}
-        return detailInformation;
-      }
-      function outputUser(link) {
-        return link.split('/')[3];
-      }
-      var statuses = {
-        'new': 'Новый',
-        'purchases': 'В закупке',
-        'manned': 'Укомплектован',
-        'shipped': 'Отправлен',
-        'received': 'Получен'
-      };
-      
-      function mappingStatuses(status) {
-        return statuses[status];
-      }
-      function mappingProgress(status) {
-        var length = Object.keys(statuses).length;
-        var indexElement;
-        var indexItem = Object.keys(statuses).some(function(key, index) {
-          if(statuses[key] == statuses[status]) {
-            indexElement = index;
-            return;
-    };
-        });
-    return 100/(length-1)*indexElement;
-}
-      var detailRows = [];
-      $('#orders tbody').on('click', 'tr td.details-control', function () {
-        var tr = $(this).closest('tr');
-        var row = table.row(tr);
-        var content = $.inArray(tr.attr('id'), detailRows);
-        if (row.child.isShown()) {
-          tr.removeClass('details');
-          row.child.hide();
-          detailRows.splice(content, 1);
-        }
-        else {
-          tr.addClass('details');
-          row.child(outputDetails(row.data())).show();
-          if (content === -1) {
-            detailRows.push(tr.attr('id'));
-         }
-        }
-      });
-
-      table.on('draw', function () {
-        $.each(detailRows, function (i, id) {
-          $('#' + id + ' td.details-control').trigger('click');
-        });
-      });
-      $("#search-name").keyup(function () {
-        console.log(table.columns($(".details-control")).search(this.value));
-        table.columns($(".details-control")).search(this.value).draw();
-      })
-    });
-  </script>
+  <script src="js/custom.js"></script>
 </body>
 
 </html>
