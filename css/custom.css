@@ -12,3 +12,8 @@ tr.details td.details-control {
  #orders_wrapper {
      width: 1085px;
  }
+ @media (max-width: 1199px) {
+     .table-wrapper {
+         overflow: auto;
+     }
+ }

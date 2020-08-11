@@ -65,9 +65,9 @@
             <div class="col-sm-5">
               <h1 class="m-0 text-dark">Заказы</h1>
             </div>
-            <div class="col-sm-7 d-flex justify-content-between">
-              <a href="#" class="btn btn-primary">Версия для печати</a>
-              <a href="new-order.html" class="btn btn-primary">Добавить заказ</a>
+            <div class="col-sm-7 d-sm-flex justify-content-between">
+              <a href="#" class="btn btn-primary d-block m-sm-0 my-2">Версия для печати</a>
+              <a href="new-order.html" class="btn btn-primary d-block m-sm-0 my-2">Добавить заказ</a>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@
                 </div>
               </div>
               <div class="row mt-4">
-                <div class="col-sm-6">
+                <div class="col-sm-6 mb-sm-0 mb-4">
                   <label for="reservation">Фильтр по датам заказа:</label>
                   <div class="input-group">
                     <input type="text" class="form-control" id="reservation">
@@ -107,7 +107,7 @@
                 </div>
               </div>
               <div class="row mt-4">
-                <div class="col-lg-2 col-sm-6 mb-lg-0 mb-sm-4">
+                <div class="col-lg-2 col-md-6 col-sm-5 mb-lg-0 mb-4">
                   <div class="input-group">
                     <label for="search-number" class="sr-only">Поиск по номеру заказа</label>
                     <input type="search" class="form-control" id="search-number" placeholder="№">
@@ -116,7 +116,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4 col-sm-6 mb-lg-0 mb-sm-4">
+                <div class="col-lg-4 col-md-6 col-sm-7 mb-lg-0 mb-4">
                   <div class="d-flex">
                     <label for="social-list" class="sr-only">Выбор социальной сети</label>
                     <select class="custom-select w-25" id="social-list">
@@ -133,7 +133,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-lg-2 col-sm-4 mb-sm-0 mb-4">
                   <div class="input-group">
                     <label for="search-weight" class="sr-only">Поиск по весу</label>
                     <input type="search" class="form-control" id="search-weight" placeholder="Вес">
@@ -142,7 +142,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-2 col-sm-4">
+                <div class="col-lg-2 col-sm-4 mb-sm-0 mb-4">
                   <div class="input-group">
                     <label for="search-track" class="sr-only">Поиск по треку</label>
                     <input type="search" class="form-control" id="search-track" placeholder="Трек">
@@ -151,7 +151,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-2 col-sm-4">
+                <div class="col-lg-2 col-sm-4 mb-sm-0 mb-4">
                   <div class="input-group">
                     <label for="status-list" class="sr-only">Выбор статуса</label>
                     <select class="custom-select w-25" id="status-list">
@@ -164,7 +164,7 @@
                   </div>
                 </div>
               </div>
-              <div class="mt-4 overflow-auto pb-3">
+              <div class="mt-4 pb-3 table-wrapper">
                 <table id="orders" class="table table-bordered table-striped mt-4">
                   <thead>
                     <tr>

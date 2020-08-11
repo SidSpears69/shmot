@@ -185,16 +185,9 @@ $(document).ready(function () {
                 }
                 else {
                     value.forEach(function (item) {
-                        result += "<li>" + item.created_at + " " + item.msg + "</li>";
+                        result += "<li>" + item.created_at + " " + item.msg + " <span class='badge badge-info'>" + item.type + "</span></li>";
                     })
                 }
-                result += "</ol>";
-            }
-            else if (key == "notes") {
-                result += "<ol>";
-                value.forEach(function (item) {
-                    result += "<li><a href='" + item.link_articule + "'>" + item.articule + "</a> <a href='" + item.link_name + "'>" + item.name + "</a> " + item.size + " " + item.color + " " + item.status + "</li>";
-                })
                 result += "</ol>";
             }
             else {
