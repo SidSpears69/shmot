@@ -1,5 +1,6 @@
 $(document).ready(function () {
     // Daterangepicker.js
+
     $('#reservation').daterangepicker({
         timeZone: "Russia/Moscow",
         startDate: new Date(),
@@ -18,11 +19,11 @@ $(document).ready(function () {
     });
 
     // Datatable.js
-    var table = $("#orders").DataTable({
+    var table = $("#table-order").DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "orders.php",
+            "url": "/orders.php",
             "type": "POST",
             "dataSrc": function (json) {
                 console.log(json)
@@ -47,7 +48,7 @@ $(document).ready(function () {
                 "class": "user-link",
                 "data": "social",
                 render: function (data) {
-                    return "<a href=" + data + ">@" + outputUser(data) + "</a>";
+                    return "<a href=" + data + ">@" + outputUser(data, $("social-list")) + "</a>";
                 }
             },
             {
@@ -74,7 +75,7 @@ $(document).ready(function () {
             {
                 "data": "progress",
                 render: function (data) {
-                    return "<div class='progress'><div class='progress-bar bg-primary progress-bar-striped' role='progressbar' aria-valuenow=" + data.current + " aria-valuemin='" + data.min + "' aria-valuemax='" + data.max + "' style='width:" + data.current + "%'></div></div>";
+                    return "<div class='progress'><div class='progress-bar bg-primary progress-bar-striped' role='progressbar' aria-valuenow=" + data.current + " aria-valuemin='" + data.min + "' aria-valuemax='" + data.max + "' style='width:" + data.current + "%' aria=label='" + data.current + "%'></div></div>";
                 }
             },
             {
@@ -101,7 +102,7 @@ $(document).ready(function () {
                     "link_edit": "link_edit"
                 },
                 render: function (data) {
-                    return "<a href='" + data.link_edit + "' class='btn btn-primary mr-1'><i class='fas fa-edit'></i><span class='sr-only'>Редактировать</span></a><a href='" + data.link_view + "' class='btn btn-primary ml-1'><i class='fas fa-search-plus'></i><span class='sr-only'>Посмотреть</span></a>"
+                    return "<a href='" + data.link_edit + "' class='btn btn-primary mr-1'><i class='fas fa-edit' aria-hidden='true'></i><span class='sr-only'>Редактировать</span></a><a href='" + data.link_view + "' class='btn btn-primary ml-1'><i class='fas fa-search-plus' aria-hidden='true'></i><span class='sr-only'>Посмотреть</span></a>"
                 }
             },
         ],
@@ -147,7 +148,7 @@ $(document).ready(function () {
 
     // Detail Rows от Datatable
     var detailRows = [];
-    $('#orders tbody').on('click', 'tr td.details-control', function () {
+    $('#table-order tbody').on('click', 'tr td.details-control', function () {
         var tr = $(this).closest('tr');
         var row = table.row(tr);
         var content = $.inArray(tr.attr('id'), detailRows);
@@ -169,7 +170,7 @@ $(document).ready(function () {
             $('#' + id + ' td.details-control').trigger('click');
         });
     });
-    
+
     // Вывод детальной информации
     function outputDetails(data) {
         var detailInformation = "";
@@ -201,7 +202,15 @@ $(document).ready(function () {
 
     // Получение имени пользователя
     function outputUser(link) {
-        return link.split('/')[3];
+        var result;
+        if (link[link.length - 1] == "/") {
+            result = link.substr(0, link.length - 1);
+        }
+        else {
+            result = link;
+        }
+        var splitResult = result.split("/");
+        return splitResult[splitResult.length - 1];
     }
 
     // Словарь статусов
@@ -257,21 +266,58 @@ $(document).ready(function () {
         table.columns($(".number-order")).search(this.value).draw();
     })
     $("#search-username").change(function () {
-        var value = {
-            "social_type": $("#social-list").val(),
-            "social": $(this).val()
-        }
-        table.columns($(".user-link")).search(value).draw();
+        findUsername();
     })
     $("#social-list").change(function () {
         if ($("#search-username").val()) {
-            var value = {
-                "social_type": $(this).val(),
-                "social": $("#search-username").val()
-            }
-            table.columns($(".user-link")).search(value).draw();
+            findUsername();
         }
     })
+    function findUsername() {
+        var social = synchronizeSocialInput($("#search-username"), $("#social-list"));
+        var value = {
+            "social_type": social.socialName,
+            "social": social.socialLink
+        }
+        table.columns($(".user-link")).search(value).draw();
+    }
+    function synchronizeSocialInput(input, select) {
+        var value = input.val();
+        var userName = outputUser(value);
+        var selectOption = select.find("option");
+        var socialName = select.find('option:selected').text();
+        var socialLink = select.val() + userName;
+        var result = $.makeArray(selectOption).some(function (item) {
+            if ($(item).val().split(userName)[0]== value.split(userName)[0] ) {
+                $(item).prop("selected", true);
+                return true;
+            }
+        });
+        return {
+            socialName: socialName,
+            socialLink: socialLink,
+            userName: userName,
+            isSimilar: result
+        }
+    }
+    function toggleSocialSelect(input) {
+        var select = input.closest(".input-group").prev("select");
+        input.on("keyup change paste click", function(){
+            checkSimilarValue($(this), select);
+        })
+        checkSimilarValue(input, select);
+    }
+    function checkSimilarValue(input, select) {
+        if (synchronizeSocialInput(input, select).isSimilar) {
+            select.prop("disabled", true);
+        }
+        else {
+            select.prop("disabled", false);
+        }
+    }
+    if($("#search-username").length > 0) {
+        toggleSocialSelect($("#search-username"));
+    }
     $("#search-weight").change(function () {
         table.columns($(".weight-value")).search(this.value).draw();
     })
@@ -284,4 +330,72 @@ $(document).ready(function () {
     $("#status-list").change(function () {
         table.columns($(".status-order")).search(this.value).draw();
     })
+
+    // Маска телефонных номеров
+    $("input[type=tel]").inputmask("+7 (999) 999-9999");
+    function createNewSocial(that) {
+        $("#add-client-error").remove();
+        var social = synchronizeSocialInput($("#card-username"), $("#card-social-list"));
+        var tr = $("#table-clients tbody tr:last");
+        if (findSimilarRecord(social.socialLink)) {
+            that.closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Уже есть запись</span>");
+        }
+        else {
+            var newTr = $("#table-clients tbody tr:last").clone();
+            $(newTr.find("td")[0]).text(social.socialName);
+            var link = $(newTr.find("td")[1]).find("a");
+            link.attr("href", (social.socialLink));
+            link.text(social.userName);
+            tr.after(newTr);
+        }
+    }
+    function findSimilarRecord(socialLink) {
+        var result = false;
+        $("#table-clients a").each(function () {
+            if ($(this).attr("href") == socialLink) {
+                result = true;
+            }
+        })
+        return result;
+    }
+    if($("#card-username").length > 0) {
+        toggleSocialSelect($("#card-username"));
+    }
+    $("#add-client").click(function () {
+        var that = $(this);
+        if ($("#card-username").val()) {
+            createNewSocial(that);
+        }
+        else {
+            $("#add-client-error").remove();
+            $(this).closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Заполните ник клиента</span>");
+        }
+        $("#table-clients button").click(function() {
+            console.log($(this));
+        })
+    })
+    $("#table-clients button").click(function() {
+        if(confirm("Вы уверены?")) {
+            $(this).closest("tr").remove();
+        }
+    })
+    $("#submit-button").click(function(){
+        var data = new FormData($("#client-form")[0]);
+        data.append("clients", createClientArray());
+        var request = new XMLHttpRequest();
+        request.open("POST", "https://echo.htmlacademy.ru/", false);
+        request.send(data);
+    })
+    function createClientArray() {
+        var clientArray = [];
+        $("#table-clients tbody tr").each(function(){
+            var client = {
+                social_type: $($(this).find("td")[0]).text(),
+                social: $($(this).find("td")[1]).find("a").attr("href")
+            }
+            clientArray.push(client);
+        })
+        return clientArray;
+    }
+    
 })

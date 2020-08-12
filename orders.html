@@ -7,10 +7,8 @@
   <title>CRM Shmot! | Заказы</title>
   <meta name="viewport" content="witableh=device-witableh, initial-scale=1">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="css/adminlte.min.css">
@@ -80,9 +78,9 @@
                 <div class="col-sm-6">
                   <label for="search-name">Поиск по имени:</label>
                   <div class="input-group">
-                    <input type="search-name" class="form-control" placeholder="ФИО" id="search-name">
+                    <input type="search" class="form-control" placeholder="ФИО" id="search-name" name="search-name">
                     <div class="input-group-append">
-                      <span class="input-group-text"><i class="fas fa-search"></i></span>
+                      <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
                     </div>
                   </div>
                 </div>
@@ -91,15 +89,15 @@
                 <div class="col-sm-6 mb-sm-0 mb-4">
                   <label for="reservation">Фильтр по датам заказа:</label>
                   <div class="input-group">
-                    <input type="text" class="form-control" id="reservation">
+                    <input type="search" class="form-control" id="reservation" name="reservation">
                     <div class="input-group-append">
-                      <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                      <span class="input-group-text"><i class="fas fa-calendar" aria-hidden="true"></i></span>
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-6 d-flex justify-content-center align-items-end">
                   <div class="icheck-success d-inline">
-                    <input type="checkbox" id="full-purchased">
+                    <input type="checkbox" id="full-purchased" name="full-purchased">
                     <label for="full-purchased">
                       Полностью закуплен
                     </label>
@@ -110,9 +108,9 @@
                 <div class="col-lg-2 col-md-6 col-sm-5 mb-lg-0 mb-4">
                   <div class="input-group">
                     <label for="search-number" class="sr-only">Поиск по номеру заказа</label>
-                    <input type="search" class="form-control" id="search-number" placeholder="№">
+                    <input type="search" class="form-control" id="search-number" placeholder="№" name="number">
                     <div class="input-group-append">
-                      <span class="input-group-text"><i class="fas fa-search"></i></span>
+                      <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
                     </div>
                   </div>
                 </div>
@@ -120,15 +118,15 @@
                   <div class="d-flex">
                     <label for="social-list" class="sr-only">Выбор социальной сети</label>
                     <select class="custom-select w-25" id="social-list">
-                      <option>IG</option>
-                      <option>VK</option>
-                      <option>Fb</option>
+                      <option value="https://www.instagram.com/">IG</option>
+                      <option value="https://www.vk.com/">VK</option>
+                      <option value="https://www.facebook.com/">Fb</option>
                     </select>
                     <div class="input-group w-75">
-                      <label for="search-number" class="sr-only">Поиск по нику</label>
-                      <input type="search" class="form-control" id="search-username" placeholder="username">
+                      <label for="search-username" class="sr-only">Поиск по нику</label>
+                      <input type="search" class="form-control" id="search-username" placeholder="username" name="search-username">
                       <div class="input-group-append">
-                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
                       </div>
                     </div>
                   </div>
@@ -136,25 +134,25 @@
                 <div class="col-lg-2 col-sm-4 mb-sm-0 mb-4">
                   <div class="input-group">
                     <label for="search-weight" class="sr-only">Поиск по весу</label>
-                    <input type="search" class="form-control" id="search-weight" placeholder="Вес">
+                    <input type="search" class="form-control" id="search-weight" placeholder="Вес" name="search-weight">
                     <div class="input-group-append">
-                      <span class="input-group-text"><i class="fas fa-search"></i></span>
+                      <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-2 col-sm-4 mb-sm-0 mb-4">
                   <div class="input-group">
                     <label for="search-track" class="sr-only">Поиск по треку</label>
-                    <input type="search" class="form-control" id="search-track" placeholder="Трек">
+                    <input type="search" class="form-control" id="search-track" placeholder="Трек" name="search-track">
                     <div class="input-group-append">
-                      <span class="input-group-text"><i class="fas fa-search"></i></span>
+                      <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-2 col-sm-4 mb-sm-0 mb-4">
                   <div class="input-group">
                     <label for="status-list" class="sr-only">Выбор статуса</label>
-                    <select class="custom-select w-25" id="status-list">
+                    <select class="custom-select w-25" id="status-list" name="status-list">
                       <option>Новый</option>
                       <option>В закупе</option>
                       <option>Укомплектован</option>
@@ -165,7 +163,8 @@
                 </div>
               </div>
               <div class="mt-4 pb-3 table-wrapper">
-                <table id="orders" class="table table-bordered table-striped mt-4">
+                <table id="table-order" class="table table-bordered table-striped mt-4">
+                  <caption class="sr-only">Список заказов</caption>
                   <thead>
                     <tr>
                       <th><span class="sr-only">Детальная информация</span></th>
@@ -182,6 +181,8 @@
                       <th><span class="sr-only">Кнопки управления заказом</span></th>
                     </tr>
                   </thead>
+                  <tbody>
+                  </tbody>
                   <tfoot>
                     <tr>
                       <th><span class="sr-only">Детальная информация</span></th>
@@ -213,15 +214,13 @@
     </footer>
   </div>
   <script src="plugins/jquery/jquery.min.js"></script>
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="plugins/moment/moment.min.js"></script>
   <script src="plugins/daterangepicker/daterangepicker.js"></script>
-  <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
   <script src="plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="js/adminlte.min.js"></script>
   <script src="js/custom.js"></script>
 </body>
 
