@@ -65,7 +65,7 @@
                         <form class="card-body" action="https://echo.htmlacademy.ru/" method="POST" id="client-form">
                             <fieldset class="row">
                                 <legend class="sr-only">Данные клиента</legend>
-                                <div class="col-sm-6">
+                                <div class="col-md-6 mb-md-0 mb-4">
                                     <label for="phone">Номер телефона</label>
                                     <div class="input-group">
                                         <input type="tel" class="form-control" id="phone" value="+7 937 000 22 33"
@@ -76,11 +76,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-md-6 mb-md-0 mb-4">
                                     <label for="client">ФИО</label>
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="client"
-                                            value="Мамонтова Анна Софиевна" name="client">
+                                            value="Мамонтова Анна Софиевна" name="client-name">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fas fa-user"
                                                     aria-hidden="true"></i></span>
@@ -105,27 +105,35 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <fieldset class="d-flex mt-4">
-                                <legend class="sr-only">Добавление социальной сети клиента</legend>
-                                <label for="card-social-list" class="sr-only">Выбор социальной сети</label>
-                                <select class="custom-select w-25" id="card-social-list">
-                                    <option value="https://www.instagram.com/">Instagram</option>
-                                    <option value="https://www.vk.com/">VK</option>
-                                    <option value="https://www.facebook.com/">Facebook</option>
-                                </select>
-                                <div class="input-group w-50">
-                                    <label for="card-username" class="sr-only">Ник пользователя</label>
-                                    <input type="text" class="form-control" id="card-username" placeholder="username">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="fas fa-search"
-                                                aria-hidden="true"></i></span>
+                            <fieldset class="row mt-4">
+                                <div class="col-lg-8 col-md-9 col-sm-12 mb-md-0 mb-4">
+                                    <div class="d-flex">
+                                        <legend class="sr-only">Добавление социальной сети клиента</legend>
+                                        <label for="card-social-list" class="sr-only">Выбор социальной сети</label>
+                                        <select class="custom-select w-25" id="card-social-list">
+                                            <option value="https://www.instagram.com/">IG</option>
+                                            <option value="https://www.vk.com/">VK</option>
+                                            <option value="https://www.facebook.com/">Fb</option>
+                                        </select>
+                                        <div class="input-group w-75">
+                                            <label for="card-username" class="sr-only">Ник пользователя</label>
+                                            <input type="text" class="form-control" id="card-username" placeholder="username">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="fas fa-search"
+                                                        aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-success w-25 ml-5"
+                                <div class="col-lg-4 col-md-3 col-sm-12">
+                                    <button type="button" class="btn btn-success btn-block"
                                     id="add-client">Добавить</button>
+                                </div>
+                                
                             </fieldset>
                             <span class='invalid-feedback' id="add-client-error" role="alert"></span>
-                            <button type="button" class="btn btn-primary btn-block mt-4 w-25 mx-auto" id="submit-button">Создать
+                            <input type="hidden" name="client-social" id="client-social">
+                            <button type="submit" class="btn btn-primary btn-block mt-4 col-lg-2 col-md-3 mx-auto" id="submit-button">Создать
                                 заказ</button>
                         </form>
                     </div>
@@ -148,6 +156,7 @@
     <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/custom.js"></script>
 </body>
 

@@ -1,6 +1,6 @@
 $(document).ready(function () {
+    
     // Daterangepicker.js
-
     $('#reservation').daterangepicker({
         timeZone: "Russia/Moscow",
         startDate: new Date(),
@@ -266,14 +266,28 @@ $(document).ready(function () {
         table.columns($(".number-order")).search(this.value).draw();
     })
     $("#search-username").change(function () {
-        findUsername();
+        findClientSocial();
     })
     $("#social-list").change(function () {
         if ($("#search-username").val()) {
-            findUsername();
+            findClientSocial();
         }
     })
-    function findUsername() {
+    $("#search-weight").change(function () {
+        table.columns($(".weight-value")).search(this.value).draw();
+    })
+    $("#search-track").change(function () {
+        table.columns($(".track-value")).search(this.value).draw();
+    })
+    $("#full-purchased").change(function () {
+        table.columns($(".status-order")).search(this.value).draw();
+    })
+    $("#status-list").change(function () {
+        table.columns($(".status-order")).search(this.value).draw();
+    })
+
+    //Поиск социальной сети клиента
+    function findClientSocial() {
         var social = synchronizeSocialInput($("#search-username"), $("#social-list"));
         var value = {
             "social_type": social.socialName,
@@ -281,6 +295,8 @@ $(document).ready(function () {
         }
         table.columns($(".user-link")).search(value).draw();
     }
+
+  // Синхронизация выбора и поля ввода социальной сети
     function synchronizeSocialInput(input, select) {
         var value = input.val();
         var userName = outputUser(value);
@@ -300,6 +316,8 @@ $(document).ready(function () {
             isSimilar: result
         }
     }
+
+    // Управление select социальной сети
     function toggleSocialSelect(input) {
         var select = input.closest(".input-group").prev("select");
         input.on("keyup change paste click", function(){
@@ -307,6 +325,8 @@ $(document).ready(function () {
         })
         checkSimilarValue(input, select);
     }
+
+    // Включение/Отключение select социальной сети
     function checkSimilarValue(input, select) {
         if (synchronizeSocialInput(input, select).isSimilar) {
             select.prop("disabled", true);
@@ -315,40 +335,44 @@ $(document).ready(function () {
             select.prop("disabled", false);
         }
     }
+
+    // Для страницы заказов
     if($("#search-username").length > 0) {
         toggleSocialSelect($("#search-username"));
     }
-    $("#search-weight").change(function () {
-        table.columns($(".weight-value")).search(this.value).draw();
-    })
-    $("#search-track").change(function () {
-        table.columns($(".track-value")).search(this.value).draw();
-    })
-    $("#full-purchased").change(function () {
-        table.columns($(".status-order")).search(this.value).draw();
-    })
-    $("#status-list").change(function () {
-        table.columns($(".status-order")).search(this.value).draw();
-    })
 
     // Маска телефонных номеров
     $("input[type=tel]").inputmask("+7 (999) 999-9999");
+
+// Добавление новой записи в таблицу
+$("#add-client").click(function () {
+    var that = $(this);
+    if ($("#card-username").val()) {
+        createNewSocial(that);
+        createClientArray();
+    }
+    else {
+        $("#add-client-error").remove();
+        $(this).closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Заполните ник клиента</span>");
+    }
+})
+
+    // Создание новой записи в таблице социальных сетей
     function createNewSocial(that) {
         $("#add-client-error").remove();
         var social = synchronizeSocialInput($("#card-username"), $("#card-social-list"));
-        var tr = $("#table-clients tbody tr:last");
+        var tbody = $("#table-clients tbody");
         if (findSimilarRecord(social.socialLink)) {
             that.closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Уже есть запись</span>");
         }
         else {
-            var newTr = $("#table-clients tbody tr:last").clone();
-            $(newTr.find("td")[0]).text(social.socialName);
-            var link = $(newTr.find("td")[1]).find("a");
-            link.attr("href", (social.socialLink));
-            link.text(social.userName);
-            tr.after(newTr);
+            var newTr = "<tr><td>" + social.socialName + "</td><td><a href=" + social.socialLink +">" + social.userName + "</a></td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>";
+            tbody.append(newTr);
+            deleteSocialRecord();
         }
     }
+
+    //Проверка на уже присутсвующую запись
     function findSimilarRecord(socialLink) {
         var result = false;
         $("#table-clients a").each(function () {
@@ -358,34 +382,27 @@ $(document).ready(function () {
         })
         return result;
     }
+
+    // Для страницы карточки клиента
     if($("#card-username").length > 0) {
         toggleSocialSelect($("#card-username"));
     }
-    $("#add-client").click(function () {
-        var that = $(this);
-        if ($("#card-username").val()) {
-            createNewSocial(that);
-        }
-        else {
-            $("#add-client-error").remove();
-            $(this).closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Заполните ник клиента</span>");
-        }
-        $("#table-clients button").click(function() {
-            console.log($(this));
+
+    // Удаление записи в таблице
+    function deleteSocialRecord() {
+        $("#table-clients button").each(function() {
+            $(this).unbind("click");
+            $(this).click(function() {
+                if(confirm("Вы уверены?")) {
+                    $(this).closest("tr").remove();
+                    createClientArray();
+                }
+            })
         })
-    })
-    $("#table-clients button").click(function() {
-        if(confirm("Вы уверены?")) {
-            $(this).closest("tr").remove();
-        }
-    })
-    $("#submit-button").click(function(){
-        var data = new FormData($("#client-form")[0]);
-        data.append("clients", createClientArray());
-        var request = new XMLHttpRequest();
-        request.open("POST", "https://echo.htmlacademy.ru/", false);
-        request.send(data);
-    })
+    }
+    deleteSocialRecord();
+
+    // Подготовка данных таблицы для отправки
     function createClientArray() {
         var clientArray = [];
         $("#table-clients tbody tr").each(function(){
@@ -395,7 +412,7 @@ $(document).ready(function () {
             }
             clientArray.push(client);
         })
-        return clientArray;
+        $("#client-social").val(JSON.stringify(clientArray));
     }
-    
+    createClientArray();
 })
