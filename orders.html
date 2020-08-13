@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <link rel="stylesheet" href="css/adminlte.min.css">
   <link rel="stylesheet" href="css/custom.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -89,7 +91,7 @@
                 <div class="col-sm-6 mb-sm-0 mb-4">
                   <label for="reservation">Фильтр по датам заказа:</label>
                   <div class="input-group">
-                    <input type="search" class="form-control" id="reservation" name="reservation">
+                    <input type="search" class="form-control" id="search-date" name="search-date">
                     <div class="input-group-append">
                       <span class="input-group-text"><i class="fas fa-calendar" aria-hidden="true"></i></span>
                     </div>
@@ -124,7 +126,8 @@
                     </select>
                     <div class="input-group w-75">
                       <label for="search-username" class="sr-only">Поиск по нику</label>
-                      <input type="search" class="form-control" id="search-username" placeholder="username" name="search-username">
+                      <input type="search" class="form-control" id="search-username" placeholder="username"
+                        name="search-username">
                       <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
                       </div>
@@ -222,6 +225,7 @@
   <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="plugins/select2/js/select2.full.min.js"></script>
   <script src="js/custom.js"></script>
 </body>
 

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     
     // Daterangepicker.js
-    $('#reservation').daterangepicker({
+    $('#search-date').daterangepicker({
         timeZone: "Russia/Moscow",
         startDate: new Date(),
         timePicker: true,
@@ -415,4 +415,11 @@ $("#add-client").click(function () {
         $("#client-social").val(JSON.stringify(clientArray));
     }
     createClientArray();
+    $('.select2').select2();
+    $('#date-order').datetimepicker({
+        language: "ru",
+        icons: {
+            time: 'fa fa-clock',
+        }
+    });
 })

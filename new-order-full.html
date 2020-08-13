@@ -4,15 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CRM Shmot! | Карточка клиента</title>
+    <title>CRM Shmot! | Новый заказ</title>
     <meta name="viewport" content="witableh=device-witableh, initial-scale=1">
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <link rel="stylesheet" href="css/adminlte.min.css">
     <link rel="stylesheet" href="css/custom.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -62,34 +64,101 @@
         <main class="content-wrapper pb-5">
             <div class="content-header">
                 <div class="container mb-2">
-                    <h1 class="m-0 text-dark">Карточка клиента</h1>
+                    <h1 class="m-0 text-dark">Новый заказ</h1>
                 </div>
             </div>
             <div class="content">
                 <div class="container">
                     <div class="card">
-                        <form class="card-body" action="https://echo.htmlacademy.ru/" method="POST" id="client-form">
+                        <form class="card-body" action="#" method="POST" id="client-form">
                             <fieldset class="row">
-                                <legend class="sr-only">Данные клиента</legend>
-                                <div class="col-md-6 mb-md-0 mb-4">
-                                    <label for="phone">Номер телефона</label>
-                                    <div class="input-group">
-                                        <input type="tel" class="form-control" id="phone" value="+7 937 000 22 33"
-                                            name="phone">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fas fa-phone"
-                                                    aria-hidden="true"></i></span>
+                                <legend class="sr-only">Данные о заказе</legend>
+                                <div class="col-sm-6">
+                                    <h3 class="h5">Номер клиента</h3>
+                                    <p>+7 937 000 22 33</p>
+                                    <h3 class="h5">ФИО</h3>
+                                    <p>Мамонтова Анна Софиевна</p>
+                                    <h3 class="h5">Соц сети</h3>
+                                    <ul>
+                                        <li>Instagram: <a href="https://www.instagram.com/anna">@anna</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="source-order">Источник заказа</label>
+                                                <select class="form-control select2" id="source-order"
+                                                    name="source-order">
+                                                    <option selected="selected">Instagram</option>
+                                                    <option>Facebook</option>
+                                                    <option>VK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="date-order">Дата заказа</label>
+                                            <div class="input-group date">
+                                                <input type="text" class="form-control datetimepicker-input" id="date-order" name="date-order"/>
+                                                <div class="input-group-append" data-toggle="datetimepicker"
+                                                    data-target="#date-order">
+                                                    <div class="input-group-text"><i class="fa fa-calendar"
+                                                            aria-hidden="true"></i></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-md-0 mb-4">
-                                    <label for="client">ФИО</label>
+                            </fieldset>
+                            <fieldset class="row">
+                                <legend class="sr-only">Адрес клиента</legend>
+                                <div class="col-sm-2">
+                                    <label for="adress-index">Индекс</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="client"
-                                            value="Мамонтова Анна Софиевна" name="client-name">
+                                        <input type="text" class="form-control" value="410033"/>
                                         <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fas fa-user"
-                                                    aria-hidden="true"></i></span>
+                                            <div class="input-group-text"><i class="fas fa-address-book"
+                                                    aria-hidden="true"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="adress-city">Город</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" value="Кемерово" id="adress-сity" name="adress-сity"/>
+                                        <div class="input-group-append">
+                                            <div class="input-group-text"><i class="fas fa-address-book"
+                                                    aria-hidden="true"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="adress-street">Улица</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" value="Пушкино" id="adress-street" name="adress-street"/>
+                                        <div class="input-group-append">
+                                            <div class="input-group-text"><i class="fas fa-address-book"
+                                                    aria-hidden="true"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="adress-house">Дом</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" value="33" id="adress-house" name="adress-house"/>
+                                        <div class="input-group-append">
+                                            <div class="input-group-text"><i class="fas fa-address-book"
+                                                    aria-hidden="true"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="adress-flat">Дом</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" value="33" id="adress-flat" name="adress-flat"/>
+                                        <div class="input-group-append">
+                                            <div class="input-group-text"><i class="fas fa-address-book"
+                                                    aria-hidden="true"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +226,8 @@
         </footer>
     </div>
     <script src="plugins/jquery/jquery.min.js"></script>
-    <script src="plugins/moment/moment.min.js"></script>
+    <script src="plugins/moment/moment-with-locales.min.js"></script>
+    <script src="plugins/moment/locale/ru.js"></script>
     <script src="plugins/daterangepicker/daterangepicker.js"></script>
     <script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
     <script src="plugins/datatables/jquery.dataTables.min.js"></script>
@@ -166,6 +236,7 @@
     <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="plugins/select2/js/select2.full.min.js"></script>
+    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="js/custom.js"></script>
 </body>
 
