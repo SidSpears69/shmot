@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     // Daterangepicker.js
     $('#search-date').daterangepicker({
         timeZone: "Russia/Moscow",
@@ -296,7 +296,7 @@ $(document).ready(function () {
         table.columns($(".user-link")).search(value).draw();
     }
 
-  // Синхронизация выбора и поля ввода социальной сети
+    // Синхронизация выбора и поля ввода социальной сети
     function synchronizeSocialInput(input, select) {
         var value = input.val();
         var userName = outputUser(value);
@@ -304,7 +304,7 @@ $(document).ready(function () {
         var socialName = select.find('option:selected').text();
         var socialLink = select.val() + userName;
         var result = $.makeArray(selectOption).some(function (item) {
-            if ($(item).val().split(userName)[0]== value.split(userName)[0] ) {
+            if ($(item).val().split(userName)[0] == value.split(userName)[0]) {
                 $(item).prop("selected", true);
                 return true;
             }
@@ -320,7 +320,7 @@ $(document).ready(function () {
     // Управление select социальной сети
     function toggleSocialSelect(input) {
         var select = input.closest(".input-group").prev("select");
-        input.on("keyup change paste click", function(){
+        input.on("keyup change paste click", function () {
             checkSimilarValue($(this), select);
         })
         checkSimilarValue(input, select);
@@ -337,38 +337,37 @@ $(document).ready(function () {
     }
 
     // Для страницы заказов
-    if($("#search-username").length > 0) {
+    if ($("#search-username").length > 0) {
         toggleSocialSelect($("#search-username"));
     }
 
     // Маска телефонных номеров
     $("input[type=tel]").inputmask("+7 (999) 999-9999");
 
-// Добавление новой записи в таблицу
-$("#add-client").click(function () {
-    var that = $(this);
-    if ($("#card-username").val()) {
-        createNewSocial(that);
-        createClientArray();
-    }
-    else {
-        $("#add-client-error").remove();
-        $(this).closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Заполните ник клиента</span>");
-    }
-})
+    // Добавление новой записи в таблицу
+    $("#add-client").click(function () {
+        var that = $(this);
+        if ($("#card-username").val()) {
+            createNewSocial(that);
+            createClientArray();
+        }
+        else {
+            $("#add-client-error").remove();
+            $(this).closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Заполните ник клиента</span>");
+        }
+    })
 
     // Создание новой записи в таблице социальных сетей
     function createNewSocial(that) {
         $("#add-client-error").remove();
         var social = synchronizeSocialInput($("#card-username"), $("#card-social-list"));
-        var tbody = $("#table-clients tbody");
         if (findSimilarRecord(social.socialLink)) {
             that.closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Уже есть запись</span>");
         }
         else {
-            var newTr = "<tr><td>" + social.socialName + "</td><td><a href=" + social.socialLink +">" + social.userName + "</a></td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>";
-            tbody.append(newTr);
-            deleteSocialRecord();
+            console.log(that);
+            $("#table-clients tbody").append("<tr><td>" + social.socialName + "</td><td><a href=" + social.socialLink + ">" + social.userName + "</a></td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
+            deleteTableRecord();
         }
     }
 
@@ -384,28 +383,29 @@ $("#add-client").click(function () {
     }
 
     // Для страницы карточки клиента
-    if($("#card-username").length > 0) {
+    if ($("#card-username").length > 0) {
         toggleSocialSelect($("#card-username"));
     }
 
     // Удаление записи в таблице
-    function deleteSocialRecord() {
-        $("#table-clients button").each(function() {
+    function deleteTableRecord(callback) {
+        $("table .btn-danger").each(function () {
             $(this).unbind("click");
-            $(this).click(function() {
-                if(confirm("Вы уверены?")) {
+            $(this).click(function () {
+                if (confirm("Вы уверены?")) {
                     $(this).closest("tr").remove();
                     createClientArray();
                 }
+                callback();
             })
         })
     }
-    deleteSocialRecord();
+    deleteTableRecord(sumProductsPrice);
 
     // Подготовка данных таблицы для отправки
     function createClientArray() {
         var clientArray = [];
-        $("#table-clients tbody tr").each(function(){
+        $("#table-clients tbody tr").each(function () {
             var client = {
                 social_type: $($(this).find("td")[0]).text(),
                 social: $($(this).find("td")[1]).find("a").attr("href")
@@ -415,11 +415,39 @@ $("#add-client").click(function () {
         $("#client-social").val(JSON.stringify(clientArray));
     }
     createClientArray();
-    $('.select2').select2();
+
+    // Select2.js 
+    $('.select2').select2({
+        allowClear: true
+    });
+
+    // Datetimipicker.js
     $('#date-order').datetimepicker({
         language: "ru",
         icons: {
             time: 'fa fa-clock',
         }
     });
+
+    // Добавление нового товара в таблицу заказов
+    $("#article-order").change(function () {
+        if ($(this).val()) {
+            var selectedOption = $(this).find("option:selected");
+            $("#table-product tbody").append("<tr><td><a href='/content/"
+             + selectedOption.data("article") + "'>" + selectedOption.data("article") + "</a></td><td><a href='"
+              + selectedOption.data("link") + "'>" + selectedOption.val() + "</a></td><td class='price-order'>"
+              + selectedOption.data("price") 
+              +"</td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
+            deleteTableRecord(sumProductsPrice);
+            sumProductsPrice();
+        }
+    })
+    function sumProductsPrice() {
+        var result = 0;
+        $(".price-order").each(function(){
+            result += parseInt($(this).text());
+        })
+        $("#sum-price").text(result);
+    }
+    sumProductsPrice();
 })

@@ -95,17 +95,17 @@
                                 </div>
                             </fieldset>
                             <table class="table table-bordered table-striped mt-4" id="table-clients">
-                                <caption class="sr-only">Список социальных сетей</caption>
+                                <caption class="sr-only">Список заказов клиента</caption>
                                 <thead>
                                     <tr>
-                                        <th>Соц. сеть</th>
-                                        <th>Ник</th>
+                                        <th>Артикул</th>
+                                        <th>Описание</th>
                                         <th>Действие</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Instagram</td>
+                                        <td>3023334</td>
                                         <td><a href="https://www.instagram.com/anna">@anna</a></td>
                                         <td><button type="button" class="btn btn-danger w-100">Удалить</button></td>
                                     </tr>
@@ -138,10 +138,8 @@
                                 </div>
 
                             </fieldset>
-                            <span class='invalid-feedback' id="add-client-error" role="alert"></span>
                             <input type="hidden" name="client-social" id="client-social">
-                            <button type="submit" class="btn btn-primary btn-block mt-4 col-lg-2 col-md-3 mx-auto"
-                                id="submit-button">Создать
+                            <button type="submit" class="btn btn-primary btn-block mt-4 col-lg-2 col-md-3 mx-auto">Создать
                                 заказ</button>
                         </form>
                     </div>
@@ -157,7 +155,8 @@
         </footer>
     </div>
     <script src="plugins/jquery/jquery.min.js"></script>
-    <script src="plugins/moment/moment.min.js"></script>
+    <script src="plugins/moment/moment-with-locales.min.js"></script>
+    <script src="plugins/moment/locale/ru.js"></script>
     <script src="plugins/daterangepicker/daterangepicker.js"></script>
     <script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
     <script src="plugins/datatables/jquery.dataTables.min.js"></script>
@@ -166,6 +165,7 @@
     <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="plugins/select2/js/select2.full.min.js"></script>
+    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="js/custom.js"></script>
 </body>
 
