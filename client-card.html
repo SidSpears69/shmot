@@ -69,31 +69,33 @@
                 <div class="container">
                     <div class="card">
                         <form class="card-body" action="https://echo.htmlacademy.ru/" method="POST" id="client-form">
-                            <div class="row">
-                                <h2 class="sr-only">Данные клиента</h2>
-                                <div class="col-md-6 mb-md-0 mb-4">
-                                    <label for="phone">Номер телефона</label>
-                                    <div class="input-group">
-                                        <input type="tel" class="form-control" id="phone" value="+7 937 000 22 33"
-                                            name="phone">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fas fa-phone"
-                                                    aria-hidden="true"></i></span>
+                            <fieldset>
+                                <div class="row">
+                                    <legend class="sr-only">Данные клиента</legend>
+                                    <div class="col-md-6 mb-md-0 mb-4">
+                                        <label for="phone">Номер телефона</label>
+                                        <div class="input-group">
+                                            <input type="tel" class="form-control" id="phone" value="+7 937 000 22 33"
+                                                name="phone">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="fas fa-phone"
+                                                        aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-md-0 mb-4">
+                                        <label for="client">ФИО</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="client"
+                                                value="Мамонтова Анна Софиевна" name="client-name">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="fas fa-user"
+                                                        aria-hidden="true"></i></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-md-0 mb-4">
-                                    <label for="client">ФИО</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="client"
-                                            value="Мамонтова Анна Софиевна" name="client-name">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fas fa-user"
-                                                    aria-hidden="true"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </fieldset>
                             <table class="table table-bordered table-striped mt-4" id="table-clients">
                                 <caption class="sr-only">Список заказов клиента</caption>
                                 <thead>
@@ -111,33 +113,35 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="row mt-4">
-                                <div class="col-lg-8 col-md-9 col-sm-12 mb-md-0 mb-4">
-                                    <div class="d-flex">
-                                        <legend class="sr-only">Добавление социальной сети клиента</legend>
-                                        <label for="card-social-list" class="sr-only">Выбор социальной сети</label>
-                                        <select class="custom-select w-25" id="card-social-list">
-                                            <option value="https://www.instagram.com/">IG</option>
-                                            <option value="https://www.vk.com/">VK</option>
-                                            <option value="https://www.facebook.com/">Fb</option>
-                                        </select>
-                                        <div class="input-group w-75">
-                                            <label for="card-username" class="sr-only">Ник пользователя</label>
-                                            <input type="text" class="form-control" id="card-username"
-                                                placeholder="username">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text"><i class="fas fa-search"
-                                                        aria-hidden="true"></i></span>
+                            <fieldset>
+                                <div class="row mt-4">
+                                    <div class="col-lg-8 col-md-9 col-sm-12 mb-md-0 mb-4">
+                                        <div class="d-flex">
+                                            <legend class="sr-only">Добавление социальной сети клиента</legend>
+                                            <label for="card-social-list" class="sr-only">Выбор социальной сети</label>
+                                            <select class="custom-select w-25" id="card-social-list">
+                                                <option value="https://www.instagram.com/">IG</option>
+                                                <option value="https://www.vk.com/">VK</option>
+                                                <option value="https://www.facebook.com/">Fb</option>
+                                            </select>
+                                            <div class="input-group w-75">
+                                                <label for="card-username" class="sr-only">Ник пользователя</label>
+                                                <input type="text" class="form-control" id="card-username"
+                                                    placeholder="username">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fas fa-search"
+                                                            aria-hidden="true"></i></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-lg-4 col-md-3 col-sm-12">
+                                        <button type="button" class="btn btn-success btn-block"
+                                            id="add-client">Добавить</button>
+                                    </div>
+    
                                 </div>
-                                <div class="col-lg-4 col-md-3 col-sm-12">
-                                    <button type="button" class="btn btn-success btn-block"
-                                        id="add-client">Добавить</button>
-                                </div>
-
-                            </div>
+                            </fieldset>
                             <input type="hidden" name="client-social" id="client-social">
                             <button type="submit" class="btn btn-primary btn-block mt-4 col-lg-2 col-md-3 mx-auto">Создать
                                 заказ</button>

@@ -472,4 +472,52 @@ $(document).ready(function () {
         $("#products-order").val(JSON.stringify(orderArray));
     }
     createOrderArray();
+
+    // Добавление нового товара в таблицу заказов на странице редактирования 
+    $("#article-order-edit").change(function () {
+        if ($(this).val()) {
+            var selectedOption = $(this).find("option:selected");
+            $("#table-edit-order tbody").append("<tr><td><a href='/content/"
+             + selectedOption.data("article") + "'>" + selectedOption.data("article") + "</a></td><td><a href='"
+              + selectedOption.data("link") + "'>" + selectedOption.val() + "</a></td><td class='price-order'>"
+              + selectedOption.data("price") +"</td><td>"
+              + selectedOption.data("status") 
+              +"</td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
+            deleteTableRecord($("#table-edit-order"), createOrderEditArray, sumProductsPrice);
+            sumProductsPrice();
+            createOrderEditArray();
+        }
+    })
+
+    // Добавление комментария
+    $("#comments-order").change(function(){
+        var date = new Date();
+        $("#comments").append("<li>" + date.toLocaleDateString('ru') + " " + $(this).val() + "</li>");
+        createOrderEditArray();
+    })
+
+    // Подготовка данных страницы редактирования заказа для отправки на сервер
+    function createOrderEditArray() {
+        var orderArray = [];
+        var commentsArray = [];
+        $("#comments li").each(function(){
+            commentsArray.push($(this).text());
+        })
+        $("#table-edit-order tbody tr").each(function () {
+            var order = {
+                articule: $($(this).find("td")[0]).text(),
+                link_articule: $($(this).find("td")[0]).find("a").attr("href"),
+                name_order: $($(this).find("td")[1]).text(),
+                name_order_link: $($(this).find("td")[1]).find("a").attr("href"),
+                status: $($(this).find("td")[2]).text(),
+            }
+            orderArray.push(order);
+        })
+        var result = {
+            products: orderArray,
+            notes: commentsArray
+        }
+        $("#products-order-edit").val(JSON.stringify(result));
+    }
+    createOrderEditArray();
 })

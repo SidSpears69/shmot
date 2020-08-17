@@ -102,7 +102,7 @@
                                                 <label for="date-order">Дата заказа</label>
                                                 <div class="input-group date">
                                                     <input type="text" class="form-control datetimepicker-input"
-                                                        id="date-order" name="date-order" />
+                                                        id="date-order" name="date-order-edit" />
                                                     <div class="input-group-append" data-toggle="datetimepicker"
                                                         data-target="#date-order">
                                                         <div class="input-group-text"><i class="fa fa-calendar"
@@ -175,13 +175,14 @@
                                 </div>
                             </fieldset>
                             <div class="table-wrapper">
-                                <table class="table table-bordered table-striped mt-4" id="table-product">
+                                <table class="table table-bordered table-striped mt-4" id="table-edit-order">
                                     <caption class="sr-only">Список заказов</caption>
                                     <thead>
                                         <tr>
                                             <th>Артикул</th>
                                             <th>Описание</th>
                                             <th>Цена, руб</th>
+                                            <th>Статус</th>
                                             <th>Действие</th>
                                         </tr>
                                     </thead>
@@ -190,12 +191,14 @@
                                             <td><a href="/content/302334">302334</a></td>
                                             <td><a href="/goods/2213fffsdf">Блузка 42 Черная</a></td>
                                             <td class="price-order">1700</td>
+                                            <td>Закуплено</td>
                                             <td><button type="button" class="btn btn-danger w-100">Удалить</button></td>
                                         </tr>
                                         <tr>
                                             <td><a href="/content/4324434">4324434</a></td>
                                             <td><a href="/goods/2213fffsdg">Шорты 36 Белая</a></td>
                                             <td class="price-order">1900</td>
+                                            <td>Принято</td>
                                             <td><button type="button" class="btn btn-danger w-100">Удалить</button></td>
                                         </tr>
                                     </tbody>
@@ -203,7 +206,7 @@
                             </div>
                             <fieldset>
                                 <div class="row mt-4">
-                                    <h2 class="sr-only">Данные о товаре</h2>
+                                    <legend class="sr-only">Данные о товаре</legend>
                                     <div class="col-sm-6">
                                         <label for="article-order">Артикул</label>
                                     </div>
@@ -211,15 +214,39 @@
                                         <p class="h3 text-right">Сумма: <span id="sum-price">3600</span> руб</p>
                                     </div>
                                     <div class="col-sm-12">
-                                        <select class="form-control select2" id="article-order"
+                                        <select class="form-control select2" id="article-order-edit"
                                             data-placeholder="Выберите товар">
                                             <option value="Блузка 48 Белая" data-link="/content/302335"
-                                                data-article="335566" data-price="1000">335566 Блузка 48 Белая</option>
+                                                data-article="335566" data-price="1000" data-status="Новый">335566 Блузка 48 Белая</option>
                                             <option value="Рубашка 48 Белая" data-link="/content/302345"
-                                                data-article="335576" data-price="1100">335576 Рубашка 48 Белая</option>
+                                                data-article="335576" data-price="1100" data-status="Отправлен">335576 Рубашка 48 Белая</option>
                                             <option value="Брюки 42 Черные" data-link="/content/302445"
-                                                data-article="335676" data-price="1200">335676 Брюки 42 Черные</option>
+                                                data-article="335676" data-price="1200" data-status="Укомплектован">335676 Брюки 42 Черные</option>
                                         </select>
+                                    </div>
+                                    <div class="col-sm-12 mt-4">
+                                        <h2 class="h4">Комментарии</h2>
+                                        <ul id="comments">
+                                            <li>17.02.2020 Не в городе</li>
+                                            <li>18.02.2020 Не хочет выкупать</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-sm-6 mb-sm-0 mb-4">
+                                        <label for="comments-order">Добавить комментарий</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="comments-order"
+                                                name="comments-order" />
+                                            <div class="input-group-append">
+                                                <div class="input-group-text"><i class="fas fa-comments"
+                                                        aria-hidden="true"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 d-flex">
+                                        <button type="button" class="btn btn-success btn-block mt-auto"
+                                            id="add-comments">Добавить комментарий</button>
                                     </div>
                                     <div class="col-sm-6 mt-4">
                                         <div class="icheck-success d-inline">
@@ -235,14 +262,14 @@
                                         <label for="prepayment-order">Предоплата</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" value="3600" id="prepayment-order"
-                                                name="prepayment-order" />
+                                                name="prepayment-order"/>
                                             <div class="input-group-append">
                                                 <div class="input-group-text">руб.</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 d-flex">
-                                        <input type="hidden" name="products-order" id="products-order">
+                                        <input type="hidden" name="products-order-edit" id="products-order-edit">
                                         <button type="submit" class="btn btn-primary btn-block mt-auto">Создать
                                             заказ</button>
                                     </div>
