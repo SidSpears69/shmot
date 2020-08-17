@@ -255,7 +255,7 @@ $(document).ready(function () {
     }
 
 
-    // Поиск по Datatables
+    // Поиск по Datatables(возможно рефакторинг)
     $("#search-name").change(function () {
         table.columns($(".details-control")).search(this.value).draw();
     })
@@ -365,9 +365,8 @@ $(document).ready(function () {
             that.closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Уже есть запись</span>");
         }
         else {
-            console.log(that);
             $("#table-clients tbody").append("<tr><td>" + social.socialName + "</td><td><a href=" + social.socialLink + ">" + social.userName + "</a></td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
-            deleteTableRecord();
+            deleteTableRecord($("#table-clients"), createClientArray);
         }
     }
 
@@ -388,21 +387,24 @@ $(document).ready(function () {
     }
 
     // Удаление записи в таблице
-    function deleteTableRecord(callback) {
-        $("table .btn-danger").each(function () {
+    function deleteTableRecord(table, createArray, callback) {
+        table.find(".btn-danger").each(function () {
             $(this).unbind("click");
             $(this).click(function () {
                 if (confirm("Вы уверены?")) {
                     $(this).closest("tr").remove();
-                    createClientArray();
+                    createArray();
                 }
-                callback();
+                if(callback) {
+                    callback();
+                }
+                
             })
         })
     }
-    deleteTableRecord(sumProductsPrice);
+    deleteTableRecord($("#table-clients"), createClientArray);
 
-    // Подготовка данных таблицы для отправки
+    // Подготовка данных таблицы социальных сетей для отправки(возможно рефакторинг)
     function createClientArray() {
         var clientArray = [];
         $("#table-clients tbody tr").each(function () {
@@ -438,10 +440,13 @@ $(document).ready(function () {
               + selectedOption.data("link") + "'>" + selectedOption.val() + "</a></td><td class='price-order'>"
               + selectedOption.data("price") 
               +"</td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
-            deleteTableRecord(sumProductsPrice);
+            deleteTableRecord($("#table-product"), createOrderArray, sumProductsPrice);
             sumProductsPrice();
+            createOrderArray();
         }
     })
+
+    // Подсчет стоимости заказа
     function sumProductsPrice() {
         var result = 0;
         $(".price-order").each(function(){
@@ -450,4 +455,21 @@ $(document).ready(function () {
         $("#sum-price").text(result);
     }
     sumProductsPrice();
+    deleteTableRecord($("#table-product"), createOrderArray, sumProductsPrice);
+
+    // Подготовка данных таблицы заказов для отправки(возможно рефакторинг)
+    function createOrderArray() {
+        var orderArray = [];
+        $("#table-product tbody tr").each(function () {
+            var order = {
+                articule: $($(this).find("td")[0]).text(),
+                link_articule: $($(this).find("td")[0]).find("a").attr("href"),
+                name_order: $($(this).find("td")[1]).text(),
+                name_order_link: $($(this).find("td")[1]).find("a").attr("href"),
+            }
+            orderArray.push(order);
+        })
+        $("#products-order").val(JSON.stringify(orderArray));
+    }
+    createOrderArray();
 })
