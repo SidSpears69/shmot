@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CRM Shmot! | Клиенты</title>
+    <meta name="viewport" content="witableh=device-witableh, initial-scale=1">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="css/adminlte.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition layout-top-nav">
+    <div class="wrapper">
+        <header>
+            <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+                <div class="container">
+                    <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
+                        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                        <ul class="navbar-nav w-100 justify-content-between">
+                            <li class="nav-item">
+                                <a href="content.html" class="nav-link">Контент</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active">Клиенты</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="index3.html" class="nav-link">Товары</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="orders.html" class="nav-link active">Заказы</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="index3.html" class="nav-link">Закупки</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Дашбоард</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="index3.html" class="nav-link">Отчеты</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="login.html" class="nav-link">Выход</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="content-wrapper pb-5">
+            <div class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-sm-6 mb-md-0 mb-3">
+                            <h1 class="m-0 text-dark">Клиенты</h1>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-6 ml-auto">
+                                    <a href="#" class="btn btn-primary btn-block">Добавить клиента</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="search-number-clients" class="sr-only">Поиск по номеру:</label>
+                                    <div class="input-group">
+                                        <input type="search" class="form-control" placeholder="№"
+                                            id="search-number-clients" name="search-number-clients">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-search"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="search-name-clients" class="sr-only">Поиск по имени:</label>
+                                    <div class="input-group">
+                                        <input type="search" class="form-control" placeholder="ФИО"
+                                            id="search-name-clients" name="search-name-clients">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-search"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="search-name-clients" class="sr-only">Поиск по телефону:</label>
+                                    <div class="input-group">
+                                        <input type="search" class="form-control" placeholder="Телефон"
+                                            id="search-pnone-clients" name="search-phone-clients">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-search"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 pb-3 table-wrapper">
+                                <table id="table-order" class="table table-bordered table-striped mt-4">
+                                    <caption class="sr-only">Список заказов</caption>
+                                    <thead>
+                                        <tr>
+                                            <th><span class="sr-only">Детальная информация</span></th>
+                                            <th>Номер</th>
+                                            <th>Профиль</th>
+                                            <th>Вес</th>
+                                            <th>Трек</th>
+                                            <th>Источник</th>
+                                            <th>Статус</th>
+                                            <th>Прогресс</th>
+                                            <th>Пред.</th>
+                                            <th>Цена</th>
+                                            <th>Дата заказа</th>
+                                            <th><span class="sr-only">Кнопки управления заказом</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th><span class="sr-only">Детальная информация</span></th>
+                                            <th>Номер</th>
+                                            <th>Профиль</th>
+                                            <th>Вес</th>
+                                            <th>Трек</th>
+                                            <th>Источник</th>
+                                            <th>Статус</th>
+                                            <th>Прогресс</th>
+                                            <th>Пред.</th>
+                                            <th>Цена</th>
+                                            <th>Дата заказа</th>
+                                            <th><span class="sr-only">Кнопки управления заказом</span></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-inline">
+                Anything you want
+            </div>
+            <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            reserved.
+        </footer>
+    </div>
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/moment/moment-with-locales.min.js"></script>
+    <script src="plugins/moment/locale/ru.js"></script>
+    <script src="plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="plugins/select2/js/select2.full.min.js"></script>
+    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

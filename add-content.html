@@ -64,67 +64,86 @@
         <main class="content-wrapper pb-5">
             <div class="content-header">
                 <div class="container mb-2">
-                    <h1 class="m-0 text-dark">Заказ № 20070003 принят</h1>
+                    <h1 class="m-0 text-dark">Добавить контент</h1>
                 </div>
             </div>
             <div class="content">
                 <div class="container">
                     <div class="card">
-                        <div class="card-body">
+                        <form class="card-body" action="#" method="POST" id="add-content">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h3 class="h5">Номер клиента</h3>
-                                    <p>+7 937 000 22 33</p>
-                                    <h3 class="h5">ФИО</h3>
-                                    <p>Мамонтова Анна Софиевна</p>
-                                    <h3 class="h5">Соц сети</h3>
-                                    <ul>
-                                        <li>Instagram: <a href="https://www.instagram.com/anna">@anna</a></li>
-                                    </ul>
-                                    <h3 class="h5">Адрес</h3>
-                                    <p>410033 Кемерово Пушкино 33 33</p>
-                                    <h3 class="h5">Шмот</h3>
-                                    <ol>
-                                        <li>302334 Блузка 42 Черная Принято</li>
-                                        <li>4324434 Шорты 36 Белые Принято</li>
-                                    </ol>
-                                    <h3 class="h5">Сумма</h3>
-                                    <p>3600 руб</p>
+                                    <div class="form-group">
+                                        <label for="name-content">Наименование</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="Блузка" id="name-content"
+                                                name="name-content" />
+                                            <div class="input-group-append">
+                                                <div class="input-group-text"><i class="fas fa-pen"
+                                                        aria-hidden="true"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="color-content">Цвет</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="Черный" id="color-content"
+                                                name="color-content" />
+                                            <div class="input-group-append">
+                                                <div class="input-group-text"><i class="fas fa-palette"
+                                                        aria-hidden="true"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="size-content">Размер</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="48" id="size-content"
+                                                name="size-content" />
+                                            <div class="input-group-append">
+                                                <div class="input-group-text"><i class="fas fa-ruler-horizontal"
+                                                        aria-hidden="true"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="purchase-price-content">Закупочная цена</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" value="400"
+                                                id="purchase-price-content" name="purchase-price-content" />
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">руб.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price-content">Цена</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" value="3000" id="price-content"
+                                                name="price-content" />
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">руб.</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <h3 class="h5">Трек</h3>
-                                    <p>3334444677777</p>
-                                    <h3 class="h5">Предоплата</h3>
-                                    <p>3600 руб</p>
-                                    <h3 class="h5">Дата принятия</h3>
-                                    <p>26.07.2020</p>
-                                    <h3 class="h5">Дата отправки</h3>
-                                    <p>29.07.2020</p>
-                                    <h3 class="h5">Дата хранения на почте</h3>
-                                    <p>30.08.2020</p>
-                                    <h3 class="h5">Дата получения</h3>
-                                    <p>15.08.2020</p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <a href="#" class="btn btn-primary d-block mb-sm-0 mb-3">Редактировать заказ</a>
-                                </div>
-                                <div class="col-sm-6">
-                                    <a href="#" class="btn btn-danger d-block">Удалить заказ</a>
+                                    <img src="https://via.placeholder.com/400/FFFFFF?text=изображение отсутствует" class="img-fluid d-block mx-auto"
+                                    alt="Фото товара" />
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-    </div>
-    </main>
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-inline">
-            Anything you want
-        </div>
-        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-        reserved.
-    </footer>
+        </main>
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-inline">
+                Anything you want
+            </div>
+            <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            reserved.
+        </footer>
     </div>
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/moment/moment-with-locales.min.js"></script>

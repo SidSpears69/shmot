@@ -48,7 +48,7 @@ $(document).ready(function () {
                 "class": "user-link",
                 "data": "social",
                 render: function (data) {
-                    return "<a href=" + data + ">@" + outputUser(data, $("social-list")) + "</a>";
+                    return "<a href=" + data + ">@" + cutLink(data, $("social-list")) + "</a>";
                 }
             },
             {
@@ -200,8 +200,8 @@ $(document).ready(function () {
         return detailInformation;
     }
 
-    // Получение имени пользователя
-    function outputUser(link) {
+    // Обрезка ссылки до последней части
+    function cutLink(link) {
         var result;
         if (link[link.length - 1] == "/") {
             result = link.substr(0, link.length - 1);
@@ -299,7 +299,7 @@ $(document).ready(function () {
     // Синхронизация выбора и поля ввода социальной сети
     function synchronizeSocialInput(input, select) {
         var value = input.val();
-        var userName = outputUser(value);
+        var userName = cutLink(value);
         var selectOption = select.find("option");
         var socialName = select.find('option:selected').text();
         var socialLink = select.val() + userName;
@@ -395,10 +395,10 @@ $(document).ready(function () {
                     $(this).closest("tr").remove();
                     createArray();
                 }
-                if(callback) {
+                if (callback) {
                     callback();
                 }
-                
+
             })
         })
     }
@@ -436,10 +436,10 @@ $(document).ready(function () {
         if ($(this).val()) {
             var selectedOption = $(this).find("option:selected");
             $("#table-product tbody").append("<tr><td><a href='/content/"
-             + selectedOption.data("article") + "'>" + selectedOption.data("article") + "</a></td><td><a href='"
-              + selectedOption.data("link") + "'>" + selectedOption.val() + "</a></td><td class='price-order'>"
-              + selectedOption.data("price") 
-              +"</td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
+                + selectedOption.data("article") + "'>" + selectedOption.data("article") + "</a></td><td><a href='"
+                + selectedOption.data("link") + "'>" + selectedOption.val() + "</a></td><td class='price-order'>"
+                + selectedOption.data("price")
+                + "</td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
             deleteTableRecord($("#table-product"), createOrderArray, sumProductsPrice);
             sumProductsPrice();
             createOrderArray();
@@ -449,7 +449,7 @@ $(document).ready(function () {
     // Подсчет стоимости заказа
     function sumProductsPrice() {
         var result = 0;
-        $(".price-order").each(function(){
+        $(".price-order").each(function () {
             result += parseInt($(this).text());
         })
         $("#sum-price").text(result);
@@ -478,11 +478,11 @@ $(document).ready(function () {
         if ($(this).val()) {
             var selectedOption = $(this).find("option:selected");
             $("#table-edit-order tbody").append("<tr><td><a href='/content/"
-             + selectedOption.data("article") + "'>" + selectedOption.data("article") + "</a></td><td><a href='"
-              + selectedOption.data("link") + "'>" + selectedOption.val() + "</a></td><td class='price-order'>"
-              + selectedOption.data("price") +"</td><td>"
-              + selectedOption.data("status") 
-              +"</td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
+                + selectedOption.data("article") + "'>" + selectedOption.data("article") + "</a></td><td><a href='"
+                + selectedOption.data("link") + "'>" + selectedOption.val() + "</a></td><td class='price-order'>"
+                + selectedOption.data("price") + "</td><td>"
+                + selectedOption.data("status")
+                + "</td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
             deleteTableRecord($("#table-edit-order"), createOrderEditArray, sumProductsPrice);
             sumProductsPrice();
             createOrderEditArray();
@@ -490,7 +490,7 @@ $(document).ready(function () {
     })
 
     // Добавление комментария
-    $("#comments-order").change(function(){
+    $("#comments-order").change(function () {
         var date = new Date();
         $("#comments").append("<li>" + date.toLocaleDateString('ru') + " " + $(this).val() + "</li>");
         createOrderEditArray();
@@ -500,7 +500,7 @@ $(document).ready(function () {
     function createOrderEditArray() {
         var orderArray = [];
         var commentsArray = [];
-        $("#comments li").each(function(){
+        $("#comments li").each(function () {
             commentsArray.push($(this).text());
         })
         $("#table-edit-order tbody tr").each(function () {
@@ -520,4 +520,75 @@ $(document).ready(function () {
         $("#products-order-edit").val(JSON.stringify(result));
     }
     createOrderEditArray();
+
+    //Поиск по артикулу
+    $("#search-article").change(function () {
+        var value = $(this).val();
+        $("#content-items").empty();
+        ajaxRequest(value);
+    })
+
+    //Ajax запрос на обновление контента
+    function ajaxRequest(value) {
+        $.ajax({
+            method: "POST",
+            url: 'content.php',
+            data: { "value": value },
+            success: function (responce) {
+                var result = JSON.parse(responce);
+                $.each(result, function (index, value) {
+                    $("#content-items").append(drawContent(value));
+                });
+            }
+        });
+    }
+
+    // Отрисовка нового контента
+    function drawContent(content) {
+        if($("#template-content").length > 0) {
+            var template = $("#template-content")[0].content.cloneNode(true);
+        }
+        $(template).find("img").prop("src", content.img);
+        $(template).find("img").prop("alt", content.name);
+        $(template).find(".name-content").text(content.articule + " " + content.name + " " + content.size);
+        $(template).find(".price-purchase-content").text(content.purchase_price);
+        $(template).find(".price-content").text(content.price);
+        $(template).find("a.text-primary").attr(("href"), function () {
+            return this + content.id;
+        });
+        $(template).find("a.text-danger").attr(("href"), function () {
+            return this + content.id;
+        });
+        deleteContent();
+        return template;
+    }
+
+    // Удаление контента
+    function deleteContent() {
+        $("#content-items").find(".text-danger").each(function () {
+            $(this).unbind("click");
+            $(this).click(function (evt) {
+                evt.preventDefault();
+                var value = cutLink($(this).attr("href"));
+                if (confirm("Вы уверены?")) {
+                    $(this).closest(".content-item").remove();
+                    $.ajax({
+                        method: "DELETE",
+                        url: 'content.php',
+                        data: { "value": value }
+                    });
+                }
+            })
+        })
+    }
+    deleteContent();
+
+    // Бесконечный скролл
+    var value = 0;
+    $(window).scroll(function () {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+            value++;
+            ajaxRequest(value);
+        }
+    })
 })
