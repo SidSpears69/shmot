@@ -1,0 +1,74 @@
+[
+    {
+        "id": "7",
+        "articule": "332334",
+        "name": "Блузка",
+        "size": "42",
+        "color": "Черная",
+        "purchase_price": 300,
+        "price": 3000,
+        "img": "https://via.placeholder.com/350/000000?text=2",
+        "status": "Принят",
+        "number": 3344
+    },
+    {
+        "id": "8",
+        "articule": "332334",
+        "name": "Блузка",
+        "size": "42",
+        "color": "Черная",
+        "purchase_price": 300,
+        "price": 3000,
+        "img": "https://via.placeholder.com/350/000000?text=3",
+        "status": "Принят",
+        "number": 3344
+    },
+    {
+        "id": "9",
+        "articule": "332334",
+        "name": "Блузка",
+        "size": "42",
+        "color": "Черная",
+        "purchase_price": 300,
+        "price": 3000,
+        "img": "https://via.placeholder.com/350/000000?text=4",
+        "status": "Принят",
+        "number": 3344
+    },
+    {
+        "id": "10",
+        "articule": "332334",
+        "name": "Блузка",
+        "size": "42",
+        "color": "Черная",
+        "purchase_price": 300,
+        "price": 3000,
+        "img": "https://via.placeholder.com/350/000000?text=5",
+        "status": "Принят",
+        "number": 3344
+    },
+    {
+        "id": "11",
+        "articule": "332334",
+        "name": "Блузка",
+        "size": "42",
+        "color": "Черная",
+        "purchase_price": 300,
+        "price": 3000,
+        "img": "https://via.placeholder.com/350/000000?text=6",
+        "status": "Принят",
+        "number": 3344
+    },
+    {
+        "id": "12",
+        "articule": "332334",
+        "name": "Блузка",
+        "size": "42",
+        "color": "Черная",
+        "purchase_price": 300,
+        "price": 3000,
+        "img": "https://via.placeholder.com/350/000000?text=7",
+        "status": "Принят",
+        "number": 3344
+    }
+]

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CRM Shmot! | Контент</title>
+    <title>CRM Shmot! | Товар</title>
     <meta name="viewport" content="witableh=device-witableh, initial-scale=1">
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -34,7 +34,7 @@
                     <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                         <ul class="navbar-nav w-100 justify-content-between">
                             <li class="nav-item">
-                                <a  href="content.html" class="nav-link">Контент</a>
+                                <a href="content.html" class="nav-link">Контент</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">Клиенты</a>
@@ -65,18 +65,26 @@
                 <div class="container mb-2">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Контент</h1>
-                        </div>
-                        <div class="col-sm-3 ml-auto">
-                            <a href="#" class="btn btn-primary btn-block">Добавить контент</a>
+                            <h1 class="m-0 text-dark">Товары</h1>
                         </div>
                     </div>
                     <div class="row mt-4">
-                        <div class="col-sm-4">
-                            <label for="search-article" class="sr-only">Поиск по артикулу:</label>
+                        <div class="col-sm-4 mb-sm-0 mb-3">
+                            <label for="search-product-article" class="sr-only">Поиск по артикулу:</label>
                             <div class="input-group">
-                                <input type="search" class="form-control" placeholder="Артикул" id="search-article"
-                                    name="search-article" data-search>
+                                <input type="search" class="form-control" placeholder="Артикул"
+                                    id="search-product-article" name="search-product-article">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-search"
+                                            aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mb-sm-0 mb-3">
+                            <label for="search-product-status" class="sr-only">Поиск по статусу:</label>
+                            <div class="input-group">
+                                <input type="search" class="form-control" placeholder="Статус"
+                                    id="search-product-status" name="search-product-status">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fas fa-search"
                                             aria-hidden="true"></i></span>
@@ -84,21 +92,10 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <label for="search-status" class="sr-only">Поиск по статусу:</label>
+                            <label for="search-product-order" class="sr-only">Поиск по заказу:</label>
                             <div class="input-group">
-                                <input type="search" class="form-control" placeholder="Статус" id="search-status"
-                                    name="search-status" data-search>
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-search"
-                                            aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <label for="search-status" class="sr-only">Поиск по заказу:</label>
-                            <div class="input-group">
-                                <input type="search" class="form-control" placeholder="Заказ" id="search-order"
-                                    name="search-order" data-search>
+                                <input type="search" class="form-control" placeholder="Заказ" id="search-product-order"
+                                    name="search-product-order">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fas fa-search"
                                             aria-hidden="true"></i></span>
@@ -114,112 +111,202 @@
                 <div class="container">
                     <div class="card">
                         <div class="card-body">
-                            <div class="filter-container row">
-                                <div class="filtr-item col-sm-3 pt-2 card" data-category="1">
-                                    <a href="https://via.placeholder.com/1200/000000.png?text=1" data-toggle="lightbox"
-                                        data-title="332334 Черная блузка 42" class="card-img-top">
-                                        <img src="https://via.placeholder.com/300/000000?text=1" class="img-fluid mb-2"
-                                            alt="332334 Черная блузка 42" />
-                                    </a>
-                                    <div class="card-body">
-                                        <p class="text-center">332334 Черная блузка 42</p>
-                                        <p class="text-center">Закуп: 300 руб</p>
-                                        <p class="text-center">Цена: 3000 руб</p>
-                                        <p class="text-center">Статус: принят</p>
-                                        <p class="text-center">Номер заказа: 3344</p>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="#" class="text-primary text-center mr-2">Посмотреть</a>
-                                            <a href="#" class="text-primary text-center ml-2">Заказ</a>
+                            <div class="row" id="product-items">
+                                <div class="col-lg-4 col-md-6 content-item">
+                                    <div class="card p-2">
+                                        <div class="card-img-top text-center">
+                                            <img src="https://via.placeholder.com/350/000000?text=1"
+                                                class="img-fluid mb-2" alt="332334 Черная блузка 42" />
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="text-center name-product">332334 Черная блузка 42</p>
+                                            <p class="text-center">Закуп:
+                                                <span class="price-purchase-product">300</span> руб
+                                            </p>
+                                            <p class="text-center">Цена:
+                                                <span class="price-product">3000</span> руб
+                                            </p>
+                                            <p class="text-center">Cтатус:
+                                                <span class="status-product">Принят</span>
+                                            </p>
+                                            <p class="text-center">№ заказа:
+                                                <span class="status-product">3344</span> руб
+                                            </p>
+                                            <div class="row">
+                                                <div class="col-xl-6 mb-xl-0 mb-2">
+                                                    <a href="product/view/1"
+                                                        class="btn btn-primary btn-block">Посмотреть</a>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <a href="product/order/1"
+                                                        class="btn btn-success btn-block">Заказ</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="filtr-item col-sm-3 pt-2 card" data-category="1">
-                                    <a href="https://via.placeholder.com/1200/000000.png?text=1" data-toggle="lightbox"
-                                        data-title="332334 Черная блузка 42" class="card-img-top">
-                                        <img src="https://via.placeholder.com/300/000000?text=1" class="img-fluid mb-2"
-                                            alt="332334 Черная блузка 42" />
-                                    </a>
-                                    <div class="card-body">
-                                        <p class="text-center"><span class="article">332335</span> Черная блузка 42</p>
-                                        <p class="text-center">Закуп: 300 руб</p>
-                                        <p class="text-center">Цена: 3000 руб</p>
-                                        <p class="text-center">Статус: принят</p>
-                                        <p class="text-center">Номер заказа: 3344</p>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="#" class="text-primary text-center mr-2">Посмотреть</a>
-                                            <a href="#" class="text-primary text-center ml-2">Заказ</a>
+                                <div class="col-lg-4 col-md-6 content-item">
+                                    <div class="card p-2">
+                                        <div class="card-img-top text-center">
+                                            <img src="https://via.placeholder.com/350/000000?text=1"
+                                                class="img-fluid mb-2" alt="332334 Черная блузка 42" />
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="text-center name-product">332334 Черная блузка 42</p>
+                                            <p class="text-center">Закуп:
+                                                <span class="price-purchase-product">300</span> руб
+                                            </p>
+                                            <p class="text-center">Цена:
+                                                <span class="price-product">3000</span> руб
+                                            </p>
+                                            <p class="text-center">Cтатус:
+                                                <span class="status-product">Принят</span>
+                                            </p>
+                                            <p class="text-center">№ заказа:
+                                                <span class="number-product">3344</span> руб
+                                            </p>
+                                            <div class="row">
+                                                <div class="col-xl-6 mb-xl-0 mb-2">
+                                                    <a href="product/view/1"
+                                                        class="btn btn-primary btn-block">Посмотреть</a>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <a href="product/order/1"
+                                                        class="btn btn-success btn-block">Заказ</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="filtr-item col-sm-3 pt-2 card" data-category="1">
-                                    <a href="https://via.placeholder.com/1200/000000.png?text=1" data-toggle="lightbox"
-                                        data-title="332334 Черная блузка 42" class="card-img-top">
-                                        <img src="https://via.placeholder.com/300/000000?text=1" class="img-fluid mb-2"
-                                            alt="332334 Черная блузка 42" />
-                                    </a>
-                                    <div class="card-body">
-                                        <p class="text-center">332335 Черная блузка 42</p>
-                                        <p class="text-center">Закуп: 300 руб</p>
-                                        <p class="text-center">Цена: 3000 руб</p>
-                                        <p class="text-center">Статус: принят</p>
-                                        <p class="text-center">Номер заказа: 3344</p>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="#" class="text-primary text-center mr-2">Посмотреть</a>
-                                            <a href="#" class="text-primary text-center ml-2">Заказ</a>
+                                <div class="col-lg-4 col-md-6 content-item">
+                                    <div class="card p-2">
+                                        <div class="card-img-top text-center">
+                                            <img src="https://via.placeholder.com/350/000000?text=1"
+                                                class="img-fluid mb-2" alt="332334 Черная блузка 42" />
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="text-center name-product">332334 Черная блузка 42</p>
+                                            <p class="text-center">Закуп:
+                                                <span class="price-purchase-product">300</span> руб
+                                            </p>
+                                            <p class="text-center">Цена:
+                                                <span class="price-product">3000</span> руб
+                                            </p>
+                                            <p class="text-center">Cтатус:
+                                                <span class="status-product">Принят</span>
+                                            </p>
+                                            <p class="text-center">№ заказа:
+                                                <span class="number-product">3344</span> руб
+                                            </p>
+                                            <div class="row">
+                                                <div class="col-xl-6 mb-xl-0 mb-2">
+                                                    <a href="product/view/1"
+                                                        class="btn btn-primary btn-block">Посмотреть</a>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <a href="product/order/1"
+                                                        class="btn btn-success btn-block">Заказ</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="filtr-item col-sm-3 pt-2 card" data-category="1">
-                                    <a href="https://via.placeholder.com/1200/000000.png?text=1" data-toggle="lightbox"
-                                        data-title="332334 Черная блузка 42" class="card-img-top">
-                                        <img src="https://via.placeholder.com/300/000000?text=1" class="img-fluid mb-2"
-                                            alt="332334 Черная блузка 42" />
-                                    </a>
-                                    <div class="card-body">
-                                        <p class="text-center">332334 Черная блузка 42</p>
-                                        <p class="text-center">Закуп: 300 руб</p>
-                                        <p class="text-center">Цена: 3000 руб</p>
-                                        <p class="text-center">Статус: принят</p>
-                                        <p class="text-center">Номер заказа: 3344</p>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="#" class="text-primary text-center mr-2">Посмотреть</a>
-                                            <a href="#" class="text-primary text-center ml-2">Заказ</a>
+                                <div class="col-lg-4 col-md-6 content-item">
+                                    <div class="card p-2">
+                                        <div class="card-img-top text-center">
+                                            <img src="https://via.placeholder.com/350/000000?text=1"
+                                                class="img-fluid mb-2" alt="332334 Черная блузка 42" />
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="text-center name-product">332334 Черная блузка 42</p>
+                                            <p class="text-center">Закуп:
+                                                <span class="price-purchase-product">300</span> руб
+                                            </p>
+                                            <p class="text-center">Цена:
+                                                <span class="price-product">3000</span> руб
+                                            </p>
+                                            <p class="text-center">Cтатус:
+                                                <span class="status-product">Принят</span>
+                                            </p>
+                                            <p class="text-center">№ заказа:
+                                                <span class="number-product">3344</span> руб
+                                            </p>
+                                            <div class="row">
+                                                <div class="col-xl-6 mb-xl-0 mb-2">
+                                                    <a href="product/view/1"
+                                                        class="btn btn-primary btn-block">Посмотреть</a>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <a href="product/order/1"
+                                                        class="btn btn-success btn-block">Заказ</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="filtr-item col-sm-3 pt-2 card" data-category="1">
-                                    <a href="https://via.placeholder.com/1200/000000.png?text=1" data-toggle="lightbox"
-                                        data-title="332334 Черная блузка 42" class="card-img-top">
-                                        <img src="https://via.placeholder.com/300/000000?text=1" class="img-fluid mb-2"
-                                            alt="332334 Черная блузка 42" />
-                                    </a>
-                                    <div class="card-body">
-                                        <p class="text-center">332334 Черная блузка 42</p>
-                                        <p class="text-center">Закуп: 300 руб</p>
-                                        <p class="text-center">Цена: 3000 руб</p>
-                                        <p class="text-center">Статус: принят</p>
-                                        <p class="text-center">Номер заказа: 3344</p>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="#" class="text-primary text-center mr-2">Посмотреть</a>
-                                            <a href="#" class="text-primary text-center ml-2">Заказ</a>
+                                <div class="col-lg-4 col-md-6 content-item">
+                                    <div class="card p-2">
+                                        <div class="card-img-top text-center">
+                                            <img src="https://via.placeholder.com/350/000000?text=1"
+                                                class="img-fluid mb-2" alt="332334 Черная блузка 42" />
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="text-center name-product">332334 Черная блузка 42</p>
+                                            <p class="text-center">Закуп:
+                                                <span class="price-purchase-product">300</span> руб
+                                            </p>
+                                            <p class="text-center">Цена:
+                                                <span class="price-product">3000</span> руб
+                                            </p>
+                                            <p class="text-center">Cтатус:
+                                                <span class="status-product">Принят</span>
+                                            </p>
+                                            <p class="text-center">№ заказа:
+                                                <span class="number-product">3344</span> руб
+                                            </p>
+                                            <div class="row">
+                                                <div class="col-xl-6 mb-xl-0 mb-2">
+                                                    <a href="product/view/1"
+                                                        class="btn btn-primary btn-block">Посмотреть</a>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <a href="product/order/1"
+                                                        class="btn btn-success btn-block">Заказ</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="filtr-item col-sm-3 pt-2 card" data-category="1">
-                                    <a href="https://via.placeholder.com/1200/000000.png?text=1" data-toggle="lightbox"
-                                        data-title="332334 Черная блузка 42" class="card-img-top">
-                                        <img src="https://via.placeholder.com/300/000000?text=1" class="img-fluid mb-2"
-                                            alt="332334 Черная блузка 42" />
-                                    </a>
-                                    <div class="card-body">
-                                        <p class="text-center">332334 Черная блузка 42</p>
-                                        <p class="text-center">Закуп: 300 руб</p>
-                                        <p class="text-center">Цена: 3000 руб</p>
-                                        <p class="text-center">Статус: принят</p>
-                                        <p class="text-center">Номер заказа: 3344</p>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="#" class="text-primary text-center mr-2">Посмотреть</a>
-                                            <a href="#" class="text-primary text-center ml-2">Заказ</a>
+                                <div class="col-lg-4 col-md-6 content-item">
+                                    <div class="card p-2">
+                                        <div class="card-img-top text-center">
+                                            <img src="https://via.placeholder.com/350/000000?text=1"
+                                                class="img-fluid mb-2" alt="332334 Черная блузка 42" />
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="text-center name-product">332334 Черная блузка 42</p>
+                                            <p class="text-center">Закуп:
+                                                <span class="price-purchase-product">300</span> руб
+                                            </p>
+                                            <p class="text-center">Цена:
+                                                <span class="price-product">3000</span> руб
+                                            </p>
+                                            <p class="text-center">Cтатус:
+                                                <span class="status-product">Принят</span>
+                                            </p>
+                                            <p class="text-center">№ заказа:
+                                                <span class="number-product">3344</span> руб
+                                            </p>
+                                            <div class="row">
+                                                <div class="col-xl-6 mb-xl-0 mb-2">
+                                                    <a href="product/view/1"
+                                                        class="btn btn-primary btn-block">Посмотреть</a>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <a href="product/order/1"
+                                                        class="btn btn-success btn-block">Заказ</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -235,6 +322,30 @@
             <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
             reserved.
         </footer>
+        <template id="template-product">
+            <div class="col-lg-4 col-md-6 content-item">
+                <div class="card p-2">
+                    <div class="card-img-top text-center">
+                        <img src="" class="img-fluid mb-2" alt="" />
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center name-product"></p>
+                        <p class="text-center">Закуп: <span class="price-purchase-product"></span> руб</p>
+                        <p class="text-center">Цена: <span class="price-product"></span> руб</p>
+                        <p class="text-center">Cтатус: <span class="status-product"></span></p>
+                        <p class="text-center">№ заказа: <span class="number-product"></span> руб</p>
+                        <div class="row">
+                            <div class="col-xl-6 mb-xl-0 mb-2">
+                                <a href="product/view/" class="btn btn-primary btn-block">Посмотреть</a>
+                            </div>
+                            <div class="col-xl-6">
+                                <a href="product/order/" class="btn btn-success btn-block">Заказ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
     </div>
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/moment/moment-with-locales.min.js"></script>
@@ -249,8 +360,7 @@
     <script src="plugins/select2/js/select2.full.min.js"></script>
     <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
-    <script src="plugins/filterizr/jquery.filterizr.min.js"></script>
     <script src="js/custom.js"></script>
 </body>
+
 </html>

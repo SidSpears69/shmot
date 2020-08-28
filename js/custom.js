@@ -521,23 +521,27 @@ $(document).ready(function () {
     }
     createOrderEditArray();
 
-    //Поиск по артикулу
+    //Поиск контента по артикулу
     $("#search-article").change(function () {
-        var value = $(this).val();
-        $("#content-items").empty();
-        ajaxRequest(value);
+        findOnServer($(this).val(), 'content.php', drawContent, $("#content-items"))
     })
 
+    // Поиск на сервере
+    function findOnServer(value, url, callback, container) {
+        container.empty();
+        ajaxRequest(value, url, callback, container);
+    }
+
     //Ajax запрос на обновление контента
-    function ajaxRequest(value) {
+    function ajaxRequest(value, url, callback, container) {
         $.ajax({
             method: "POST",
-            url: 'content.php',
+            url: url,
             data: { "value": value },
             success: function (responce) {
                 var result = JSON.parse(responce);
                 $.each(result, function (index, value) {
-                    $("#content-items").append(drawContent(value));
+                    container.append(callback(value));
                 });
             }
         });
@@ -584,16 +588,20 @@ $(document).ready(function () {
     deleteContent();
 
     // Бесконечный скролл
-    var value = 0;
-    $(window).scroll(function () {
-        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-            value++;
-            ajaxRequest(value);
-        }
-    })
+    function infinityScroll(url, callback, container) {
+        var value = 0;
+        $(window).scroll(function () {
+            if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+                value++;
+                ajaxRequest(value, url, callback, container);
+            }
+        })
+    }
+    infinityScroll('content.php', drawContent, $("#content-items"));
+
     // Загрузка контента
     var emptyImg = $(".img-content").attr("src");
-    $("#add-file").change(function() {
+    $("#add-file").change(function () {
         var that = $(this);
         var file = this.files[0];
         var reader = new FileReader();
@@ -607,20 +615,58 @@ $(document).ready(function () {
     })
 
     // Удаление загруженного контента
-    $("#add-content").find(".btn-danger").click(function(){
+    $("#add-content").find(".btn-danger").click(function () {
         if (confirm("Вы уверены?")) {
-        var input = $("#add-file");
-        input.val("");
-        input.prop("disabled", false);
-        input.prev("label").removeClass("disabled");
-        $(".img-content").attr("src", emptyImg);
+            var input = $("#add-file");
+            input.val("");
+            input.prop("disabled", false);
+            input.prev("label").removeClass("disabled");
+            $(".img-content").attr("src", emptyImg);
         }
     })
 
     // Проверка на загруженный контент при отправке формы
-    $("#add-content").find(".btn-primary").click(function(){
-        if($("#add-file").val() == "") {
+    $("#add-content").find(".btn-primary").click(function () {
+        if ($("#add-file").val() == "") {
             $(this).before("<span class='invalid-feedback d-block' id='add-content-error' role='alert'>Добавьте файл</span>")
         }
     })
+
+    // Поиск товара по артикулу
+    $("#search-product-article").change(function () {
+        findOnServer($(this).val(), "product.php", drawProduct, $("#product-items"))
+    })
+
+    // Поиск товара по его статусу
+    $("#search-product-status").change(function () {
+        findOnServer($(this).val(), "product.php", drawProduct, $("#product-items"))
+    })
+
+    // Поиск товара по номеру заказа
+    $("#search-product-order").change(function () {
+        findOnServer($(this).val(), "product.php", drawProduct, $("#product-items"))
+    })
+
+    // Отрисовка нового продукта
+    function drawProduct(product) {
+        if ($("#template-product").length > 0) {
+            var template = $("#template-product")[0].content.cloneNode(true);
+        }
+        $(template).find("img").prop("src", product.img);
+        $(template).find("img").prop("alt", product.name);
+        $(template).find(".name-product").text(product.articule + " " + product.name + " " + product.size);
+        $(template).find(".price-purchase-product").text(product.purchase_price);
+        $(template).find(".price-product").text(product.price);
+        $(template).find(".status-product").text(product.status);
+        $(template).find(".number-product").text(product.number);
+        $(template).find("a.btn-primary").attr(("href"), function () {
+            return this + product.id;
+        });
+        $(template).find("a.btn-success").attr(("href"), function () {
+            return this + product.id;
+        });
+        return template;
+    }
+
+    infinityScroll('product.php', drawProduct, $("#product-items"));
 })
