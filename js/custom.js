@@ -18,7 +18,38 @@ $(document).ready(function () {
         }
     });
 
-    // Datatable.js
+    // Настройки языка DataTable.js
+    var languageDataTable = {
+        "processing": "Подождите...",
+        "search": "Поиск:",
+        "lengthMenu": "Показать _MENU_ записей",
+        "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+        "infoEmpty": "Записи с 0 до 0 из 0 записей",
+        "infoFiltered": "(отфильтровано из _MAX_ записей)",
+        "infoPostFix": "",
+        "loadingRecords": "Загрузка записей...",
+        "zeroRecords": "Записи отсутствуют.",
+        "emptyTable": "В таблице отсутствуют данные",
+        "paginate": {
+            "first": "Первая",
+            "previous": "Предыдущая",
+            "next": "Следующая",
+            "last": "Последняя"
+        },
+        "aria": {
+            "sortAscending": ": активировать для сортировки столбца по возрастанию",
+            "sortDescending": ": активировать для сортировки столбца по убыванию"
+        },
+        "select": {
+            "rows": {
+                "_": "Выбрано записей: %d",
+                "0": "Кликните по записи для выбора",
+                "1": "Выбрана одна запись"
+            }
+        }
+    };
+
+    // Datatable.js заказы
     var table = $("#table-order").DataTable({
         "processing": true,
         "serverSide": true,
@@ -102,7 +133,7 @@ $(document).ready(function () {
                     "link_edit": "link_edit"
                 },
                 render: function (data) {
-                    return "<a href='" + data.link_edit + "' class='btn btn-primary mr-1'><i class='fas fa-edit' aria-hidden='true'></i><span class='sr-only'>Редактировать</span></a><a href='" + data.link_view + "' class='btn btn-primary ml-1'><i class='fas fa-search-plus' aria-hidden='true'></i><span class='sr-only'>Посмотреть</span></a>"
+                    return "<a href='" + data.link_edit + "' class='btn btn-primary mr-1' title='Редактировать'><i class='fas fa-edit' aria-hidden='true'></i><span class='sr-only'>Редактировать</span></a><a href='" + data.link_view + "' class='btn btn-primary ml-1' title='Посмотреть'><i class='fas fa-search-plus' aria-hidden='true'></i><span class='sr-only'>Посмотреть</span></a>"
                 }
             },
         ],
@@ -115,37 +146,8 @@ $(document).ready(function () {
         "drawCallback": function () {
             findFullPrepayment($(this));
         },
-        "language": {
-            "processing": "Подождите...",
-            "search": "Поиск:",
-            "lengthMenu": "Показать _MENU_ записей",
-            "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
-            "infoEmpty": "Записи с 0 до 0 из 0 записей",
-            "infoFiltered": "(отфильтровано из _MAX_ записей)",
-            "infoPostFix": "",
-            "loadingRecords": "Загрузка записей...",
-            "zeroRecords": "Записи отсутствуют.",
-            "emptyTable": "В таблице отсутствуют данные",
-            "paginate": {
-                "first": "Первая",
-                "previous": "Предыдущая",
-                "next": "Следующая",
-                "last": "Последняя"
-            },
-            "aria": {
-                "sortAscending": ": активировать для сортировки столбца по возрастанию",
-                "sortDescending": ": активировать для сортировки столбца по убыванию"
-            },
-            "select": {
-                "rows": {
-                    "_": "Выбрано записей: %d",
-                    "0": "Кликните по записи для выбора",
-                    "1": "Выбрана одна запись"
-                }
-            }
-        },
+        "language": languageDataTable
     });
-
     // Detail Rows от Datatable
     var detailRows = [];
     $('#table-order tbody').on('click', 'tr td.details-control', function () {
@@ -365,15 +367,15 @@ $(document).ready(function () {
             that.closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Уже есть запись</span>");
         }
         else {
-            $("#table-clients tbody").append("<tr><td>" + social.socialName + "</td><td><a href=" + social.socialLink + ">" + social.userName + "</a></td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
-            deleteTableRecord($("#table-clients"), createClientArray);
+            $("#table-client-social tbody").append("<tr><td>" + social.socialName + "</td><td><a href=" + social.socialLink + ">" + social.userName + "</a></td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
+            deleteTableRecord($("#table-client-social"), createClientArray);
         }
     }
 
     //Проверка на уже присутсвующую запись
     function findSimilarRecord(socialLink) {
         var result = false;
-        $("#table-clients a").each(function () {
+        $("#table-client-social a").each(function () {
             if ($(this).attr("href") == socialLink) {
                 result = true;
             }
@@ -402,12 +404,12 @@ $(document).ready(function () {
             })
         })
     }
-    deleteTableRecord($("#table-clients"), createClientArray);
+    deleteTableRecord($("#table-client-social"), createClientArray);
 
     // Подготовка данных таблицы социальных сетей для отправки(возможно рефакторинг)
     function createClientArray() {
         var clientArray = [];
-        $("#table-clients tbody tr").each(function () {
+        $("#table-client-social tbody tr").each(function () {
             var client = {
                 social_type: $($(this).find("td")[0]).text(),
                 social: $($(this).find("td")[1]).find("a").attr("href")
@@ -669,4 +671,63 @@ $(document).ready(function () {
     }
 
     infinityScroll('product.php', drawProduct, $("#product-items"));
+
+    // DataTable.js клиенты
+    var tableClients = $("#table-clients").DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": "/clients.php",
+            "type": "POST",
+            "dataSrc": function (json) {
+                console.log(json)
+                return json.data;
+            }
+        },
+        "columns": [
+            {
+                "class": "number-clients",
+                "data": "number",
+            },
+            {
+                "class": "name-clients",
+                "data": "name",
+            },
+            {
+                "class": "phone-clients",
+                "data": "phone"
+            },
+            {
+                "data": "number",
+                render: function (data) {
+                    return "<a href='orders/" + data + "' class='btn btn-primary'>Заказы</a><a href='client-card-order/" + data + "' class='btn btn-primary ml-1 w-25' title='Редактировать'><i class='fas fa-edit' aria-hidden='true'></i><span class='sr-only'>Редактировать</span></a><a href='client-card-order/" + data + "' class='btn btn-primary ml-1 w-25' title='Посмотреть'><i class='fas fa-search-plus' aria-hidden='true'></i><span class='sr-only'>Редактировать</span></a>"
+                }
+            },
+        ],
+        "order": [[1, 'asc']],
+        "responsive": true,
+        "autoWidth": false,
+        "bSort": false,
+        "bFilter": false,
+        "lengthChange": false,
+        "drawCallback": function () {
+            findFullPrepayment($(this));
+        },
+        "language": languageDataTable
+    });
+
+    // Поиск по номеру клиента
+    $("#search-number-clients").change(function () {
+        tableClients.columns($(".number-clients")).search(this.value).draw();
+    })
+
+    // Поиск по имени клиента
+    $("#search-name-clients").change(function () {
+        tableClients.columns($(".name-clients")).search(this.value).draw();
+    })
+
+    // Поиск по телефону клиента
+    $("#search-phone-clients").change(function () {
+        tableClients.columns($(".phone-clients")).search(this.value).draw();
+    })
 })

@@ -9,7 +9,7 @@ tr.details td.details-control {
  .table th {
      vertical-align: middle;
  }
- #orders_wrapper {
+ #table-order_wrapper{
      width: 1085px;
  }
  .select2-container {
@@ -22,11 +22,21 @@ tr.details td.details-control {
     max-height: 350px;
     width: auto;
 }
+
  @media (max-width: 1199px) {
      .table-wrapper {
          overflow: auto;
      }
+     #table-clients_wrapper {
+        width: 905px;
+    }
  }
+ @media (max-width: 991px) {
+    .table-clients-wrapper {
+       overflow: auto;
+    }
+ }
+
  @media (max-width: 575px) {
     #table-product {
         width: 485px;
