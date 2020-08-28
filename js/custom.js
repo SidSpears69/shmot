@@ -545,7 +545,7 @@ $(document).ready(function () {
 
     // Отрисовка нового контента
     function drawContent(content) {
-        if($("#template-content").length > 0) {
+        if ($("#template-content").length > 0) {
             var template = $("#template-content")[0].content.cloneNode(true);
         }
         $(template).find("img").prop("src", content.img);
@@ -553,10 +553,10 @@ $(document).ready(function () {
         $(template).find(".name-content").text(content.articule + " " + content.name + " " + content.size);
         $(template).find(".price-purchase-content").text(content.purchase_price);
         $(template).find(".price-content").text(content.price);
-        $(template).find("a.text-primary").attr(("href"), function () {
+        $(template).find("a.btn-primary").attr(("href"), function () {
             return this + content.id;
         });
-        $(template).find("a.text-danger").attr(("href"), function () {
+        $(template).find("a.btn-danger").attr(("href"), function () {
             return this + content.id;
         });
         deleteContent();
@@ -565,7 +565,7 @@ $(document).ready(function () {
 
     // Удаление контента
     function deleteContent() {
-        $("#content-items").find(".text-danger").each(function () {
+        $("#content-items").find(".btn-danger").each(function () {
             $(this).unbind("click");
             $(this).click(function (evt) {
                 evt.preventDefault();
@@ -589,6 +589,38 @@ $(document).ready(function () {
         if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
             value++;
             ajaxRequest(value);
+        }
+    })
+    // Загрузка контента
+    var emptyImg = $(".img-content").attr("src");
+    $("#add-file").change(function() {
+        var that = $(this);
+        var file = this.files[0];
+        var reader = new FileReader();
+        reader.onload = function () {
+            $("#add-content-error").remove();
+            $(".img-content").attr("src", reader.result);
+            $("#add-file").prop("disabled", true);
+            that.prev("label").addClass("disabled");
+        };
+        reader.readAsDataURL(file);
+    })
+
+    // Удаление загруженного контента
+    $("#add-content").find(".btn-danger").click(function(){
+        if (confirm("Вы уверены?")) {
+        var input = $("#add-file");
+        input.val("");
+        input.prop("disabled", false);
+        input.prev("label").removeClass("disabled");
+        $(".img-content").attr("src", emptyImg);
+        }
+    })
+
+    // Проверка на загруженный контент при отправке формы
+    $("#add-content").find(".btn-primary").click(function(){
+        if($("#add-file").val() == "") {
+            $(this).before("<span class='invalid-feedback d-block' id='add-content-error' role='alert'>Добавьте файл</span>")
         }
     })
 })

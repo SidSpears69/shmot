@@ -18,6 +18,10 @@ tr.details td.details-control {
  .content-header {
      background: #f4f6f9;
  }
+ .img-content {
+    max-height: 350px;
+    width: auto;
+}
  @media (max-width: 1199px) {
      .table-wrapper {
          overflow: auto;

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CRM Shmot! | Новый заказ</title>
+    <title>CRM Shmot! | Добавить контент</title>
     <meta name="viewport" content="witableh=device-witableh, initial-scale=1">
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -70,9 +70,9 @@
             <div class="content">
                 <div class="container">
                     <div class="card">
-                        <form class="card-body" action="#" method="POST" id="add-content">
+                        <form class="card-body" action="#" method="POST" id="add-content" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 mb-sm-0 mb-4">
                                     <div class="form-group">
                                         <label for="name-content">Наименование</label>
                                         <div class="input-group">
@@ -116,7 +116,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mb-0">
                                         <label for="price-content">Цена</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" value="3000" id="price-content"
@@ -127,9 +127,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <img src="https://via.placeholder.com/400/FFFFFF?text=изображение отсутствует" class="img-fluid d-block mx-auto"
+                                <div class="col-sm-6 d-flex flex-column">
+                                    <img src="https://via.placeholder.com/350/f4f6f9?text=изображение отсутствует" class="img-fluid d-block m-auto mb-1 img-content"
                                     alt="Фото товара" />
+                                    <div class="row mt-sm-auto mt-2">
+                                        <div class="col-md-6 mb-md-0 mb-2">
+                                            <label for="add-file" class="btn btn-success btn-block mb-0">Загрузить файл</label>
+                                            <input type="file" name="add-file" id="add-file" class="d-none" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-danger btn-block">Удалить</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 mx-auto mt-4">
+                                    <button type="submit" class="btn btn-primary btn-block">Добавить</button>
                                 </div>
                             </div>
                         </form>
