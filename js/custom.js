@@ -367,7 +367,7 @@ $(document).ready(function () {
             that.closest("fieldset").after("<span class='invalid-feedback d-block' id='add-client-error' role='alert'>Уже есть запись</span>");
         }
         else {
-            $("#table-client-social tbody").append("<tr><td>" + social.socialName + "</td><td><a href=" + social.socialLink + ">" + social.userName + "</a></td><td><button type='button' class='btn btn-danger w-100'>Удалить</button></td></tr>");
+            $("#table-client-social tbody").append("<tr><td>" + social.socialName + "</td><td><a href=" + social.socialLink + ">" + social.userName + "</a></td><td><button type='button' class='btn btn-danger w-100 p-1'>Удалить</button></td></tr>");
             deleteTableRecord($("#table-client-social"), createClientArray);
         }
     }
