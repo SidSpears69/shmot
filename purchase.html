@@ -77,49 +77,37 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-4 mb-sm-0 mb-3">
-                                    <label for="search-number-purchase" class="sr-only">Поиск по номеру:</label>
+                                <div class="col-sm-6 mb-sm-0 mb-3">
+                                    <label for="search-purchase-number" class="sr-only">Поиск по номеру:</label>
                                     <div class="input-group">
                                         <input type="search" class="form-control" placeholder="№"
-                                            id="search-number-clients" name="search-number-clients">
+                                            id="search-purchase-number" name="search-purchase-number">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fas fa-search"
                                                     aria-hidden="true"></i></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-4 mb-sm-0 mb-3">
-                                    <label for="search-name-clients" class="sr-only">Поиск по имени:</label>
-                                    <div class="input-group">
-                                        <input type="search" class="form-control" placeholder="ФИО"
-                                            id="search-name-clients" name="search-name-clients">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fas fa-search"
-                                                    aria-hidden="true"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="search-phone-clients" class="sr-only">Поиск по телефону:</label>
-                                    <div class="input-group">
-                                        <input type="search" class="form-control" placeholder="Телефон"
-                                            id="search-phone-clients" name="search-phone-clients">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fas fa-search"
-                                                    aria-hidden="true"></i></span>
-                                        </div>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <label for="search-purchase-status" class="sr-only">Выбор социальной сети</label>
+                                            <select class="custom-select" id="search-purchase-status">
+                                                <option selected="true" disabled="disabled">Статус</option>
+                                                <option>Закупается</option>
+                                                <option>Отправлен</option>
+                                            </select>
                                 </div>
                             </div>
                             <div class="mt-4 pb-3 table-clients-wrapper">
-                                <table id="table-clients" class="table table-bordered table-striped mt-4">
+                                <table id="table-purchase" class="table table-bordered table-striped mt-4">
                                     <caption class="sr-only">Список заказов</caption>
                                     <thead>
                                         <tr>
                                             <th>Номер</th>
-                                            <th>ФИО</th>
-                                            <th>Телефон</th>
-                                            <th><span class="sr-only">Кнопки управления клиентами</span></th>
+                                            <th>Дата</th>
+                                            <th>Статус</th>
+                                            <th>Прогресс</th>
+                                            <th>Стоимость, руб</th>
+                                            <th><span class="sr-only">Посмотреть закупку</span></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -127,9 +115,11 @@
                                     <tfoot>
                                         <tr>
                                             <th>Номер</th>
-                                            <th>ФИО</th>
-                                            <th>Телефон</th>
-                                            <th><span class="sr-only">Кнопки управления клиентами</span></th>
+                                            <th>Дата</th>
+                                            <th>Статус</th>
+                                            <th>Прогресс</th>
+                                            <th>Стоимость, руб</th>
+                                            <th><span class="sr-only">Посмотреть закупку</span></th>
                                         </tr>
                                     </tfoot>
                                 </table>

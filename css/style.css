@@ -27,7 +27,8 @@ tr.details td.details-control {
      .table-wrapper {
          overflow: auto;
      }
-     #table-clients_wrapper {
+     #table-clients_wrapper,
+     #table-purchase_wrapper {
         width: 905px;
     }
  }

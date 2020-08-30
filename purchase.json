@@ -1,0 +1,29 @@
+{
+    "draw": 2,
+    "recordsTotal": 2,
+    "recordsFiltered": 10,
+    "data": [
+        {
+            "number": 1,
+            "date": "15.06.2020",
+            "status": "Закупается",
+            "progress": {
+                "min": 0,
+                "current": 25,
+                "max": 100
+            },
+            "price": 30000
+        },
+        {
+            "number": 2,
+            "date": "15.06.2020",
+            "status": "Отправлен",
+            "progress": {
+                "min": 0,
+                "current": 50,
+                "max": 100
+            },
+            "price": 30000
+        }
+    ]
+}

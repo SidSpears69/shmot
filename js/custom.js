@@ -700,7 +700,7 @@ $(document).ready(function () {
             {
                 "data": "number",
                 render: function (data) {
-                    return "<a href='orders/" + data + "' class='btn btn-primary'>Заказы</a><a href='client-card-order/" + data + "' class='btn btn-primary ml-1 w-25' title='Редактировать'><i class='fas fa-edit' aria-hidden='true'></i><span class='sr-only'>Редактировать</span></a><a href='client-card-order/" + data + "' class='btn btn-primary ml-1 w-25' title='Посмотреть'><i class='fas fa-search-plus' aria-hidden='true'></i><span class='sr-only'>Редактировать</span></a>"
+                    return "<a href='orders/" + data + "' class='btn btn-primary'>Заказы</a><a href='client-card-order/" + data + "' class='btn btn-primary ml-1 w-25' title='Редактировать'><i class='fas fa-edit' aria-hidden='true'></i><span class='sr-only'>Редактировать</span></a><a href='client-card-order/" + data + "' class='btn btn-primary ml-1 w-25' title='Посмотреть'><i class='fas fa-search-plus' aria-hidden='true'></i><span class='sr-only'>Посмотреть</span></a>"
                 }
             },
         ],
@@ -710,9 +710,6 @@ $(document).ready(function () {
         "bSort": false,
         "bFilter": false,
         "lengthChange": false,
-        "drawCallback": function () {
-            findFullPrepayment($(this));
-        },
         "language": languageDataTable
     });
 
@@ -729,5 +726,64 @@ $(document).ready(function () {
     // Поиск по телефону клиента
     $("#search-phone-clients").change(function () {
         tableClients.columns($(".phone-clients")).search(this.value).draw();
+    })
+    
+    // DataTable.js закупки
+    var tablePurchase = $("#table-purchase").DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": "/purchase.php",
+            "type": "POST",
+            "dataSrc": function (json) {
+                console.log(json)
+                return json.data;
+            }
+        },
+        "columns": [
+            {
+                "class": "number-purchase",
+                "data": "number",
+            },
+            {
+                "data": "date",
+            },
+            {
+                "class": "status-purchase",
+                "data": "status"
+            },
+            {
+                "data": "progress",
+                render: function (data) {
+                    return "<div class='progress'><div class='progress-bar bg-primary progress-bar-striped' role='progressbar' aria-valuenow=" + data.current + " aria-valuemin='" + data.min + "' aria-valuemax='" + data.max + "' style='width:" + data.current + "%' aria=label='" + data.current + "%'></div></div>";
+                }
+            },
+            {
+                "data": "price"
+            },
+            {
+                "data": "number",
+                render: function (data) {
+                    return "<a href='purchase/view/" + data + "' class='btn btn-primary' title='Посмотреть'><i class='fas fa-search-plus' aria-hidden='true'></i><span class='sr-only'>Редактировать</span></a>"
+                }
+            },
+        ],
+        "order": [[1, 'asc']],
+        "responsive": true,
+        "autoWidth": false,
+        "bSort": false,
+        "bFilter": false,
+        "lengthChange": false,
+        "language": languageDataTable
+    });
+
+    // Поиск по номеру закупки
+    $("#search-purchase-number").change(function () {
+        tablePurchase.columns($(".number-purchase")).search(this.value).draw();
+    })
+
+    // Поиск по статусу закупки
+    $("#search-purchase-status").change(function () {
+        tablePurchase.columns($(".status-purchase")).search(this.value).draw();
     })
 })
